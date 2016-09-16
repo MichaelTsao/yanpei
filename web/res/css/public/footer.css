@@ -1,0 +1,83 @@
+.footer{
+    width: 100%;
+    height: 50px;
+    background: #fff;
+    position: fixed;
+    border-top: solid 1px #e6e6e6;
+    bottom: 0;
+    left: 0;
+    z-index: 20;
+}
+.footer ul{
+    width: 100%;
+    height: 45px;
+    display: table;
+    padding-top: 3px;
+}
+.footer ul li{
+    width: 25%;
+    display: table-cell;
+    text-align: center;
+}
+.footer ul li a{
+    text-decoration: none;
+
+}
+.popover-homeMenu-li6{
+    border-bottom: none !important;
+}
+.footer-li-a{
+    display: table-cell;
+    width: 25%;
+    height: auto;
+    text-align: center;
+}
+.icon1,.icon2,.icon3,.icon4,.icon5{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    position: relative;
+    top: .1em;
+    margin-bottom: 5px;
+    margin-top: .2em;
+}
+.icon1{
+    background: url("../../../res/img/H-footer-icon1.png") no-repeat center center;
+    background-size: 25px 23px;
+}
+.icon2{
+    background: url("../../../res/img/H-footer-icon2.png") no-repeat center center;
+    background-size: 25px 23px;
+}
+.icon3{
+    background: url("../../../res/img/H-footer-icon3.png") no-repeat center center;
+    background-size: 25px 23px;
+}
+.icon4{
+    background: url("../../../res/img/H-footer-icon4.png") no-repeat center center;
+    background-size: 25px 23px;
+}
+.name{
+    display: block;
+    color: #686868;
+    font-size: 1.2rem;
+}
+.high{
+    color: #fc4349;
+}
+.icon1.active{
+    background: url("../../../res/img/H-footer-active-icon1.png") no-repeat center center;
+    background-size: 25px 23px;
+}
+.icon2.active{
+    background: url("../../../res/img/H-footer-active-icon2.png") no-repeat center center;
+    background-size: 25px 23px;
+}
+.icon3.active{
+    background: url("../../../res/img/H-footer-active-icon3.png") no-repeat center center;
+    background-size: 25px 23px;
+}
+.icon4.active{
+    background: url("../../../res/img/H-footer-active-icon4.png") no-repeat center center;
+    background-size: 25px 23px;
+}
