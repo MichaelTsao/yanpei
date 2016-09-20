@@ -24,6 +24,7 @@
     "yiisoft/yii2-bootstrap": "*",
     "yiisoft/yii2-swiftmailer": "*",
     "yiidoc/yii2-redactor": "*",
+    "yiisoft/yii2-redis": "~2.0.0",
     "components/jqueryui": "^1.11",
     "mobiledetect/mobiledetectlib": "^2.8"
   },
