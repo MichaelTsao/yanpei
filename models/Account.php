@@ -71,7 +71,7 @@ class Account extends \yii\db\ActiveRecord implements IdentityInterface
         if ($user && $user->status == self::STATUS_ACTIVE) {
             return $user;
         } else {
-            return false;
+            return null;
         }
     }
 
