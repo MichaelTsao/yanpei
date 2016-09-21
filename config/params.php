@@ -14,5 +14,5 @@ return [
     'weixin_cert_file' => 'test_apiclient_cert.pem',
     'weixin_key_file' => 'test_apiclient_key.pem',
 
-    'host' => 'http://yp.caoxw.com/m',
+    'host' => 'http://www.eting33.com/m',
 ];
