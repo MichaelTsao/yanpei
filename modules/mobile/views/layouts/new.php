@@ -17,24 +17,28 @@
 
 <?php $style = ""; ?>
 <?php if (Yii::$app->controller->id == 'case' && Yii::$app->controller->action->id == 'list'): ?>
-<div class="case-list-top">
-    <p>
-        <a href="javascript:history.back()">返回</a>
-        <?php if ($this->params['can_create']): ?>
-            <a href="/m/case/new/<?= isset($this->params['new_id']) ? $this->params['new_id'] : '' ?>">新建病历</a>
-        <?php endif;?>
-    </p>
-</div>
-<?php $style = " style=\"top: 50px\""; ?>
+    <div class="case-list-top">
+        <p>
+            <a href="javascript:history.back()">返回</a>
+            <?php if ($this->params['can_create']): ?>
+                <a href="/m/case/new/<?= isset($this->params['new_id']) ? $this->params['new_id'] : '' ?>">新建病历</a>
+            <?php endif; ?>
+        </p>
+    </div>
+    <?php $style = " style=\"top: 50px\""; ?>
 <?php endif; ?>
 
+<?php if (!isset($this->params['noScroll'])): ?>
 <div id="wrapper"<?= $style ?>>
     <div class="scroller">
+        <?php endif; ?>
 
         <?= $content ?>
 
+        <?php if (!isset($this->params['noScroll'])): ?>
     </div>
 </div>
+<?php endif; ?>
 
 <?php if (Yii::$app->controller->id == 'doctor' && Yii::$app->controller->action->id == 'info'): ?>
     <div class="doctor-introduction-button">

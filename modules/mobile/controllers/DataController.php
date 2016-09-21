@@ -40,8 +40,7 @@ class DataController extends Controller
 
     public function actionInfo($id)
     {
-//        $this->layout = 'article';
-//        $data = Article::findOne($id);
+        $this->view->params['noScroll'] = true;
         return $this->render('info', ['id' => $id]);
     }
 
