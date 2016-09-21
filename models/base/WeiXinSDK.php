@@ -363,11 +363,8 @@ class WeiXinSDK extends Object
     public function getIsWeixin()
     {
         if ($this->_isWeixin === null) {
-            if (!empty(strstr(strtolower(Yii::$app->request->userAgent), 'micromessenger'))) {
-                $this->_isWeixin = true;
-            }else{
-                $this->_isWeixin = false;
-            }
+            $str = strstr(strtolower(Yii::$app->request->userAgent), 'micromessenger');
+            $this->_isWeixin = !empty($str);
         }
         return $this->_isWeixin;
     }
