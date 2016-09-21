@@ -9,7 +9,7 @@
 
 <style>
     img {
-        width: 70%;
+        width: 100%;
     }
 </style>
 
