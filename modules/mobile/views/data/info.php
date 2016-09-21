@@ -8,5 +8,5 @@
 ?>
 
 <iframe id="article-container" src="/m/data/content/<?=$id?>" width="100%" height="600px"></iframe>
-<p></p>
-<p></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
