@@ -7,4 +7,4 @@
  */
 ?>
 
-<iframe id="article-container" src="/m/data/content/<?=$id?>" width="100%" height="580px"></iframe>
+<iframe id="article-container" src="/m/data/content/<?=$id?>" width="100%" height="280px"></iframe>
