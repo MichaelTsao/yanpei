@@ -27,7 +27,7 @@
                         <?= isset(\app\models\Office::$time_section[$item->time_section]) ? \app\models\Office::$time_section[$item->time_section] : '' ?>
                     </span>
                 </li>
-                <li><span>预约房间：</span><span><?= !empty(\app\models\Office::findOne($item->office_id)) ? \app\models\Office::findOne($item->office_id)->name : '' ?></span></li>
+                <li><span>预约房间：</span><span><?php $one = \app\models\Office::findOne($item->office_id); echo !empty($one) ? \app\models\Office::findOne($item->office_id)->name : '' ?></span></li>
             </ul>
             <ul>
                 <li><span>订单状态：</span><span class="blue-color"><?= $item->statusName ?></span></li>
