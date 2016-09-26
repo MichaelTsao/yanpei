@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "140c892d25f76afae8d82fb5f87de849",
-    "content-hash": "87df5b1de099e77fe69a45a1ded15c3d",
+    "hash": "b9289d1dd929dc2adb71ab6bf5fa5dbd",
+    "content-hash": "b046866b65a12d8891136c0efb779844",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -230,7 +230,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/cebe/markdown/c30eb5e01fe021cc5bba2f9ee0eeef96d4931166.zip",
+                "url": "https://api.github.com/repos/cebe/markdown/zipball/c30eb5e01fe021cc5bba2f9ee0eeef96d4931166",
                 "reference": "c30eb5e01fe021cc5bba2f9ee0eeef96d4931166",
                 "shasum": ""
             },
@@ -281,17 +281,60 @@
             "time": "2016-09-14 20:40:20"
         },
         {
-            "name": "components/jquery",
-            "version": "3.1.0",
+            "name": "codemix/yii2-excelexport",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/components/jquery.git",
-                "reference": "39192bee49ceb98f36e9592ee2fc5116a414b6cc"
+                "url": "https://github.com/codemix/yii2-excelexport.git",
+                "reference": "7959054ca07d01ed36059e2e4854901deac3d392"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/components/jquery/39192bee49ceb98f36e9592ee2fc5116a414b6cc.zip",
-                "reference": "39192bee49ceb98f36e9592ee2fc5116a414b6cc",
+                "url": "https://api.github.com/repos/codemix/yii2-excelexport/zipball/7959054ca07d01ed36059e2e4854901deac3d392",
+                "reference": "7959054ca07d01ed36059e2e4854901deac3d392",
+                "shasum": ""
+            },
+            "require": {
+                "mikehaertl/php-tmpfile": "^1.0.0",
+                "phpoffice/phpexcel": "1.*",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "codemix\\excelexport\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Härtl",
+                    "email": "haertl.mike@gmail.com"
+                }
+            ],
+            "description": "A utility to quickly create Excel files from query results or raw data",
+            "keywords": [
+                "excel",
+                "export",
+                "yii2"
+            ],
+            "time": "2016-08-03 06:57:09"
+        },
+        {
+            "name": "components/jquery",
+            "version": "3.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/components/jquery.git",
+                "reference": "09a1658378bc1f818856086396ebeab7d0ec2276"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/components/jquery/zipball/09a1658378bc1f818856086396ebeab7d0ec2276",
+                "reference": "09a1658378bc1f818856086396ebeab7d0ec2276",
                 "shasum": ""
             },
             "type": "component",
@@ -318,7 +361,7 @@
             ],
             "description": "jQuery JavaScript Library",
             "homepage": "http://jquery.com",
-            "time": "2016-07-08 05:56:55"
+            "time": "2016-09-23 06:06:29"
         },
         {
             "name": "components/jqueryui",
@@ -330,7 +373,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/components/jqueryui/44ecf3794cc56b65954cc19737234a3119d036cc.zip",
+                "url": "https://api.github.com/repos/components/jqueryui/zipball/44ecf3794cc56b65954cc19737234a3119d036cc",
                 "reference": "44ecf3794cc56b65954cc19737234a3119d036cc",
                 "shasum": ""
             },
@@ -415,7 +458,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/ezyang/htmlpurifier/d0c392f77d2f2a3dcf7fcb79e2a1e2b8804e75b2.zip",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/d0c392f77d2f2a3dcf7fcb79e2a1e2b8804e75b2",
                 "reference": "d0c392f77d2f2a3dcf7fcb79e2a1e2b8804e75b2",
                 "shasum": ""
             },
@@ -459,7 +502,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/fxpio/composer-asset-plugin/d7d189e8ffac26a2e39e26a9c75e1fc5c2e2b98d.zip",
+                "url": "https://api.github.com/repos/fxpio/composer-asset-plugin/zipball/d7d189e8ffac26a2e39e26a9c75e1fc5c2e2b98d",
                 "reference": "d7d189e8ffac26a2e39e26a9c75e1fc5c2e2b98d",
                 "shasum": ""
             },
@@ -506,6 +549,42 @@
             "time": "2016-08-03 07:44:07"
         },
         {
+            "name": "mikehaertl/php-tmpfile",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mikehaertl/php-tmpfile.git",
+                "reference": "b1b013cc29a8ee0423994b286d22e3aed6640d4e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mikehaertl/php-tmpfile/zipball/b1b013cc29a8ee0423994b286d22e3aed6640d4e",
+                "reference": "b1b013cc29a8ee0423994b286d22e3aed6640d4e",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "mikehaertl\\tmp\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Härtl",
+                    "email": "haertl.mike@gmail.com"
+                }
+            ],
+            "description": "A convenience class for temporary files",
+            "keywords": [
+                "files"
+            ],
+            "time": "2016-07-07 05:59:42"
+        },
+        {
             "name": "mobiledetect/mobiledetectlib",
             "version": "2.8.22",
             "source": {
@@ -515,7 +594,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/serbanghita/Mobile-Detect/53cddae0c272a478b24a4b5fb60d0f838caf70b6.zip",
+                "url": "https://api.github.com/repos/serbanghita/Mobile-Detect/zipball/53cddae0c272a478b24a4b5fb60d0f838caf70b6",
                 "reference": "53cddae0c272a478b24a4b5fb60d0f838caf70b6",
                 "shasum": ""
             },
@@ -560,6 +639,63 @@
             "time": "2016-04-24 09:47:16"
         },
         {
+            "name": "phpoffice/phpexcel",
+            "version": "1.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPOffice/PHPExcel.git",
+                "reference": "372c7cbb695a6f6f1e62649381aeaa37e7e70b32"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPOffice/PHPExcel/zipball/372c7cbb695a6f6f1e62649381aeaa37e7e70b32",
+                "reference": "372c7cbb695a6f6f1e62649381aeaa37e7e70b32",
+                "shasum": ""
+            },
+            "require": {
+                "ext-xml": "*",
+                "ext-xmlwriter": "*",
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PHPExcel": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Maarten Balliauw",
+                    "homepage": "http://blog.maartenballiauw.be"
+                },
+                {
+                    "name": "Mark Baker"
+                },
+                {
+                    "name": "Franck Lefevre",
+                    "homepage": "http://blog.rootslabs.net"
+                },
+                {
+                    "name": "Erik Tilt"
+                }
+            ],
+            "description": "PHPExcel - OpenXML - Read, Create and Write Spreadsheet documents in PHP - Spreadsheet engine",
+            "homepage": "http://phpexcel.codeplex.com",
+            "keywords": [
+                "OpenXML",
+                "excel",
+                "php",
+                "spreadsheet",
+                "xls",
+                "xlsx"
+            ],
+            "time": "2015-05-01 07:00:55"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v5.4.3",
             "source": {
@@ -569,7 +705,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/swiftmailer/swiftmailer/4cc92842069c2bbc1f28daaaf1d2576ec4dfe153.zip",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/4cc92842069c2bbc1f28daaaf1d2576ec4dfe153",
                 "reference": "4cc92842069c2bbc1f28daaaf1d2576ec4dfe153",
                 "shasum": ""
             },
@@ -622,7 +758,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/yiidoc/yii2-redactor/c4c80c19c68728e88d135f4eec5c51352fbbaa37.zip",
+                "url": "https://api.github.com/repos/yiidoc/yii2-redactor/zipball/c4c80c19c68728e88d135f4eec5c51352fbbaa37",
                 "reference": "c4c80c19c68728e88d135f4eec5c51352fbbaa37",
                 "shasum": ""
             },
@@ -666,7 +802,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/yiisoft/yii2-framework/2b75151ea60e1fd820046416eee2e89c3dda1133.zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/2b75151ea60e1fd820046416eee2e89c3dda1133",
                 "reference": "2b75151ea60e1fd820046416eee2e89c3dda1133",
                 "shasum": ""
             },
@@ -760,7 +896,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/yiisoft/yii2-bootstrap/3fd2b8c950cce79d60e9702d6bcb24eb3c80f6c5.zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap/zipball/3fd2b8c950cce79d60e9702d6bcb24eb3c80f6c5",
                 "reference": "3fd2b8c950cce79d60e9702d6bcb24eb3c80f6c5",
                 "shasum": ""
             },
@@ -857,7 +993,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/yiisoft/yii2-jui/843a2160cfe30f5c8b0cb2e9dbd8ee6bcf97e71d.zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-jui/zipball/843a2160cfe30f5c8b0cb2e9dbd8ee6bcf97e71d",
                 "reference": "843a2160cfe30f5c8b0cb2e9dbd8ee6bcf97e71d",
                 "shasum": ""
             },
@@ -907,7 +1043,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/yiisoft/yii2-redis/7fd93ff3847e765964c8c83b7e3eed0281078916.zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-redis/zipball/7fd93ff3847e765964c8c83b7e3eed0281078916",
                 "reference": "7fd93ff3847e765964c8c83b7e3eed0281078916",
                 "shasum": ""
             },
@@ -955,7 +1091,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/yiisoft/yii2-swiftmailer/26b900767f1031ff3a4668dfa36c10595875f0a5.zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-swiftmailer/zipball/26b900767f1031ff3a4668dfa36c10595875f0a5",
                 "reference": "26b900767f1031ff3a4668dfa36c10595875f0a5",
                 "shasum": ""
             },
@@ -1034,7 +1170,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/fzaninotto/Faker/44f9a286a04b80c76a4e5fb7aad8bb539b920123.zip",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/44f9a286a04b80c76a4e5fb7aad8bb539b920123",
                 "reference": "44f9a286a04b80c76a4e5fb7aad8bb539b920123",
                 "shasum": ""
             },
@@ -1082,7 +1218,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/phpspec/php-diff/0464787bfa7cd13576c5a1e318709768798bec6a.zip",
+                "url": "https://api.github.com/repos/phpspec/php-diff/zipball/0464787bfa7cd13576c5a1e318709768798bec6a",
                 "reference": "0464787bfa7cd13576c5a1e318709768798bec6a",
                 "shasum": ""
             },
@@ -1120,7 +1256,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/yiisoft/yii2-codeception/c916a36d09fc128b05a374e7922bc56854334d56.zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-codeception/zipball/c916a36d09fc128b05a374e7922bc56854334d56",
                 "reference": "c916a36d09fc128b05a374e7922bc56854334d56",
                 "shasum": ""
             },
@@ -1165,7 +1301,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/yiisoft/yii2-debug/55ed2e853ed8050a34415f63a4da84f88a56f895.zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/55ed2e853ed8050a34415f63a4da84f88a56f895",
                 "reference": "55ed2e853ed8050a34415f63a4da84f88a56f895",
                 "shasum": ""
             },
@@ -1259,7 +1395,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/yiisoft/yii2-gii/1bd6df6804ca077ec022587905a0d43eb286f507.zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/1bd6df6804ca077ec022587905a0d43eb286f507",
                 "reference": "1bd6df6804ca077ec022587905a0d43eb286f507",
                 "shasum": ""
             },
