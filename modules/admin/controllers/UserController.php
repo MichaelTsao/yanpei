@@ -53,7 +53,9 @@ class UserController extends Controller
         $searchModel = new UserSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        Export::make($dataProvider->query);
+        Export::make($dataProvider->query,
+            ['uid', 'phone', 'genderName', 'name', 'iconUrl', 'age', 'idTypeName', 'id_number', 'email',
+            'address', 'profession', 'ctime']);
 
         return $this->render('index', [
             'searchModel' => $searchModel,

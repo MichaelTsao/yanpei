@@ -15,4 +15,5 @@ return [
     'weixin_key_file' => 'test_apiclient_key.pem',
 
     'host' => 'http://www.eting33.com/m',
+    'img_host' => 'http://www.eting33.com',
 ];

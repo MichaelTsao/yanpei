@@ -173,6 +173,7 @@ class User extends CachedActiveRecord implements IdentityInterface
             'passwordRaw' => '密码',
             'name' => '姓名',
             'gender' => '性别',
+            'genderName' => '性别',
             'icon' => '头像',
             'iconFile' => '头像',
             'age' => '年龄',
