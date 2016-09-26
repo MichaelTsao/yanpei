@@ -31,3 +31,6 @@ phpunit.phar
 /web/cover/*
 /web/icon/*
 /web/image/*
+
+# excel export
+web/res/data.xlsx
