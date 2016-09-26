@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\Export;
 use Yii;
 use app\models\User;
 use app\modules\admin\models\UserSearch;
@@ -51,6 +52,8 @@ class UserController extends Controller
     {
         $searchModel = new UserSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        Export::make($dataProvider->query);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
