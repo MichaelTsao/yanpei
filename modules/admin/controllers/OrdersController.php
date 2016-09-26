@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\Export;
 use Yii;
 use app\models\Orders;
 use app\modules\admin\models\OrdersSearch;
@@ -50,6 +51,9 @@ class OrdersController extends Controller
     {
         $searchModel = new OrdersSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        Export::make($dataProvider->query,
+            ['order_id', 'doctorName']);
 
         return $this->render('index', [
             'searchModel' => $searchModel,

@@ -202,4 +202,9 @@ class Orders extends \yii\db\ActiveRecord
             }
         }
     }
+
+    public function getDoctorName()
+    {
+        return $this->doctor->name;
+    }
 }
