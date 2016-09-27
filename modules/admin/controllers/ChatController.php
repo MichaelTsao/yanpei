@@ -3,6 +3,7 @@
 namespace app\modules\admin\controllers;
 
 use app\models\base\Common;
+use app\models\Export;
 use Yii;
 use app\models\Chat;
 use app\modules\admin\models\ChatSearch;
@@ -56,10 +57,29 @@ class ChatController extends Controller
     public function actionView($id)
     {
         $model = $this->findModel($id);
-        $chat = json_decode(Common::getChatInfo($model->chat_id), true);
+        $chat = array_reverse(json_decode(Common::getChatInfo($model->chat_id), true));
+        $export_info = [];
         foreach ($chat as $key => $item) {
-            $chat[$key]['info'] = json_decode($item['data'], true);
+            $chat[$key]['info'] = $info = json_decode($item['data'], true);
+
+            if ($item['from'] == $model->uid) {
+                $role = '用户';
+                $name = $model->user->name;
+            } else {
+                $role = '验配师';
+                $name = $model->doctor->user->name;
+            }
+            if (strstr($item['data'], '_lcfile')) {
+                $content = $info['_lcfile']['url'];
+            } elseif (isset($info['_lctext'])) {
+                $content = $info['_lctext'];
+            } else {
+                $content = $item['data'];
+            }
+            $export_info[] = [$role, $name, date('Y-m-d H:i:s', $item['timestamp'] / 1000), $content];
         }
+        Export::makeRaw($export_info, ['角色', '名字', '时间', '聊天内容']);
+
         return $this->render('view', [
             'model' => $model,
             'chat' => $chat,

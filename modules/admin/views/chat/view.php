@@ -39,11 +39,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">聊天内容&nbsp;&nbsp;<span class="badge"><?= count($chat); ?></span></h3>
+        <h3 class="panel-title">
+            聊天内容
+            &nbsp;&nbsp;
+            <span class="badge"><?= count($chat); ?></span>
+            &nbsp;&nbsp;
+            <?= Html::a('导出', '/res/data.xlsx', ['class' => 'btn btn-default']) ?>
+        </h3>
     </div>
     <div class="panel-body">
         <div class="list-group">
-            <?php foreach (array_reverse($chat) as $item): ?>
+            <?php foreach ($chat as $item): ?>
                 <li class="list-group-item list-group-item<?= $item['from'] == $model->uid ? '-info' : '-warning'; ?>">
                     <?php if ($item['from'] != $model->uid): ?>
                     <div style="text-align: right">

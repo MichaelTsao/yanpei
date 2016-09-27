@@ -32,6 +32,11 @@ class Export
                 $titles[] = $title;
             }
         }
+        static::makeRaw($data, $titles);
+    }
+
+    public static function makeRaw($data, $titles)
+    {
         if ($data && $titles) {
             $file = \Yii::createObject([
                 'class' => 'codemix\excelexport\ExcelFile',
