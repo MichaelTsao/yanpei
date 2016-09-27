@@ -64,6 +64,9 @@ use yii\widgets\ActiveForm;
         <div class="col-md-2">
             <?= $form->field($model, 'relative_contact')->textInput(['maxlength' => true]) ?>
         </div>
+        <div class="col-md-6">
+            <?= $form->field($model, 'remark')->textInput(['maxlength' => true]) ?>
+        </div>
     </div>
 
     <div class="form-group">

@@ -20,7 +20,7 @@ class UserSearch extends User
         return [
             [['uid', 'gender', 'age', 'id_type', 'relation', 'status'], 'integer'],
             [['phone', 'password', 'name', 'icon', 'id_number', 'email', 'address', 'profession', 'relative_name',
-                'relative_contact', 'ctime'], 'safe'],
+                'relative_contact', 'ctime', 'remark'], 'safe'],
         ];
     }
 

@@ -33,6 +33,7 @@ use Yii;
  * @property string $relative_name
  * @property string $relative_contact
  * @property object $doctor
+ * @property string $remark
  */
 class User extends CachedActiveRecord implements IdentityInterface
 {
@@ -144,7 +145,7 @@ class User extends CachedActiveRecord implements IdentityInterface
 
             [['id_number', 'email', 'profession', 'relative_name', 'relative_contact'], 'string', 'max' => 100],
             ['email', 'email'],
-            [['address'], 'string', 'max' => 1000],
+            [['address', 'remark'], 'string', 'max' => 1000],
 
             [['ctime'], 'safe'],
         ];
@@ -188,6 +189,7 @@ class User extends CachedActiveRecord implements IdentityInterface
             'relative_contact' => '家属联系方式',
             'status' => '状态',
             'ctime' => '创建时间',
+            'remark' => '备注',
         ];
     }
 

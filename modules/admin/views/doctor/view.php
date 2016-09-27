@@ -53,6 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'top',
                 'value' => \app\models\Doctor::$tops[$model->top],
             ],
+            'remark',
         ],
     ]) ?>
 

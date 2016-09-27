@@ -18,6 +18,7 @@ use Yii;
  * @property string $intro
  * @property string $work_location
  * @property integer $on_job
+ * @property string $remark
  * @property integer $status
  * @property integer $sort
  * @property integer $top
@@ -73,8 +74,9 @@ class Doctor extends \yii\db\ActiveRecord
             [['coverFile'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg', 'maxSize' => 1024 * 1024 * 10],
             [['on_job'], 'integer'],
             [['name', 'cover', 'education', 'school', 'company', 'work_location'], 'string', 'max' => 200],
-            [['title'], 'string', 'max' => 100]
-        ];
+            [['title'], 'string', 'max' => 100],
+            [['remark'], 'string', 'max' => 1000]
+];
     }
 
     /**
@@ -98,6 +100,7 @@ class Doctor extends \yii\db\ActiveRecord
             'status' => '状态',
             'sort' => '排序',
             'top' => '置顶',
+            'remark' => '备注',
         ];
     }
 

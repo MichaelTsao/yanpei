@@ -106,6 +106,9 @@ use yii\widgets\ActiveForm;
         <div class="col-md-2">
             <?= $form->field($model, 'top')->dropDownList(\app\models\Doctor::$tops) ?>
         </div>
+        <div class="col-md-9">
+            <?= $form->field($model, 'remark')->textInput(['maxlength' => true]) ?>
+        </div>
     </div>
 
     <div class="form-group">

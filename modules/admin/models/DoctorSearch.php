@@ -19,7 +19,7 @@ class DoctorSearch extends Doctor
     {
         return [
             [['uid'], 'integer'],
-            [['cover', 'education', 'school', 'title', 'company', 'intro', 'status', 'name'], 'safe'],
+            [['cover', 'education', 'school', 'title', 'company', 'intro', 'status', 'name', 'remark'], 'safe'],
         ];
     }
 

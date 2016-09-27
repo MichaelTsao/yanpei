@@ -60,6 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter' => User::$statusLabel,
             ],
             'ctime',
+            'remark',
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{view} {update} {delete} {doctor}',

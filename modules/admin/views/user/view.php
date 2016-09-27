@@ -60,6 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => $model->statusName,
             ],
             'ctime',
+            'remark',
         ],
     ]) ?>
 

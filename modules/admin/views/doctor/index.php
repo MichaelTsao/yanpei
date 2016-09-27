@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             // 'company',
             // 'intro:ntext',
-
+            'remark',
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{view} {update} {delete} <br/> {up} {down} {top}',
