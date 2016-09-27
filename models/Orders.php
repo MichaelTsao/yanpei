@@ -213,12 +213,12 @@ class Orders extends \yii\db\ActiveRecord
 
     public function getDoctorName()
     {
-        return $this->doctor->name;
+        return $this->doctor ? $this->doctor->name : '';
     }
 
     public function getUserName()
     {
-        return $this->user->name;
+        return $this->user ? $this->user->name : '';
     }
 
     public function getServiceName()
