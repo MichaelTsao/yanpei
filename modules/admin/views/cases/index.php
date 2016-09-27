@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create').Yii::t('app', 'Cases'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create') . Yii::t('app', 'Cases'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -27,12 +27,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'case_id',
             [
-                'value'=>'user.name',
-                'label'=>'病人',
+                'attribute' => 'uid',
+                'value' => 'user.name',
+                'label' => '病人',
+                'filter' => \app\models\Cases::getUsers(),
             ],
             [
-                'value'=>'doctor.name',
-                'label'=>'验配师',
+                'attribute' => 'doctor_id',
+                'value' => 'doctor.name',
+                'label' => '验配师',
+                'filter' => \app\models\Cases::getDoctors(),
             ],
             'deaf_date',
 //            'can_listen',
@@ -74,7 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'right_ru_tu',
             // 'left_ce_ting',
             // 'right_ce_ting',
-             'ctime',
+            'ctime',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

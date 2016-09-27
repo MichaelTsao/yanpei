@@ -18,8 +18,13 @@ class CasesSearch extends Cases
     public function rules()
     {
         return [
-            [['case_id', 'uid', 'doctor_id', 'deaf_side', 'weared', 'weared_side', 'aid_type', 'effect', 'er_ming', 'xuan_yun', 'er_tong', 'fen_mi_wu', 'operation_history', 'zao_yin', 'wai_shang', 'use_medicine', 'left_er_kuo', 'right_er_kuo', 'left_er_dao', 'right_er_dao', 'left_gu_mo', 'right_gu_mo', 'left_ru_tu', 'right_ru_tu'], 'integer'],
-            [['deaf_date', 'can_listen', 'hard_case', 'treat_result', 'left_type', 'right_type', 'family_history', 'person_history', 'ill_condition', 'cure_condition', 'toxic', 'medicine', 'allergy', 'kan_hua', 'intelligent', 'mental', 'remark', 'left_ce_ting', 'right_ce_ting', 'ctime'], 'safe'],
+            [['case_id', 'uid', 'doctor_id', 'deaf_side', 'weared', 'weared_side', 'aid_type', 'effect', 'er_ming',
+                'xuan_yun', 'er_tong', 'fen_mi_wu', 'operation_history', 'zao_yin', 'wai_shang', 'use_medicine',
+                'left_er_kuo', 'right_er_kuo', 'left_er_dao', 'right_er_dao', 'left_gu_mo', 'right_gu_mo',
+                'left_ru_tu', 'right_ru_tu'], 'integer'],
+            [['deaf_date', 'can_listen', 'hard_case', 'treat_result', 'left_type', 'right_type', 'family_history',
+                'person_history', 'ill_condition', 'cure_condition', 'toxic', 'medicine', 'allergy', 'kan_hua',
+                'intelligent', 'mental', 'remark', 'left_ce_ting', 'right_ce_ting', 'ctime'], 'safe'],
         ];
     }
 

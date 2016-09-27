@@ -524,4 +524,28 @@ class Cases extends \yii\db\ActiveRecord
     {
         return isset(User::$genderLabel[$this->gender]) ? User::$genderLabel[$this->gender] : '';
     }
+
+    public static function getUsers()
+    {
+        $r = [];
+        $data = self::find()->select('uid')->distinct(true)->all();
+        foreach ($data as $item) {
+            if ($item->user) {
+                $r[$item->uid] = $item->user->name;
+            }
+        }
+        return $r;
+    }
+
+    public static function getDoctors()
+    {
+        $r = [];
+        $data = self::find()->select('doctor_id')->distinct(true)->all();
+        foreach ($data as $item) {
+            if ($item->doctor) {
+                $r[$item->doctor_id] = $item->doctor->name;
+            }
+        }
+        return $r;
+    }
 }
