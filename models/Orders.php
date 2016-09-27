@@ -68,14 +68,22 @@ class Orders extends \yii\db\ActiveRecord
         return [
             'order_id' => '订单ID',
             'doctor_id' => '验配师',
+            'doctorName' => '验配师',
             'uid' => '用户',
+            'userName' => '用户',
             'service_id' => '服务',
+            'serviceName' => '服务',
             'product_id' => '产品',
+            'productName' => '产品',
             'hospital_id' => '医院',
+            'hospitalName' => '医院',
             'office_id' => '房间',
+            'officeName' => '房间',
             'time_section' => '时间段',
+            'sectionName' => '时间段',
             'appoint_date' => '预约时间',
             'status' => '状态',
+            'statusName' => '状态',
             'ctime' => '创建时间',
             'accept_time' => '接受时间',
             'pay_time' => '支付时间',
@@ -206,5 +214,39 @@ class Orders extends \yii\db\ActiveRecord
     public function getDoctorName()
     {
         return $this->doctor->name;
+    }
+
+    public function getUserName()
+    {
+        return $this->user->name;
+    }
+
+    public function getServiceName()
+    {
+        return $this->service ? $this->service->name : '';
+    }
+
+    public function getProductName()
+    {
+        $name = [];
+        foreach ($this->products as $product){
+            $name[] = $product->product->name;
+        }
+        return implode('|', $name);
+    }
+
+    public function getHospitalName()
+    {
+        return $this->hospital ? $this->hospital->name : '';
+    }
+
+    public function getOfficeName()
+    {
+        return $this->office ? $this->office->name : '';
+    }
+
+    public function getSectionName()
+    {
+        return isset(Office::$time_section[$this->time_section]) ? Office::$time_section[$this->time_section] : '';
     }
 }

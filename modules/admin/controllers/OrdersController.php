@@ -53,7 +53,8 @@ class OrdersController extends Controller
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         Export::make($dataProvider->query,
-            ['order_id', 'doctorName']);
+            ['order_id', 'doctorName', 'userName', 'serviceName', 'productName', 'hospitalName', 'officeName',
+                'sectionName', 'statusName', 'appoint_date', 'ctime', 'accept_time', 'pay_time', 'close_time']);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
