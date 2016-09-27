@@ -26,6 +26,8 @@ use yii\widgets\ActiveForm;
     <?= Html::img($model->icon, ['height' => 50]) ?>
     <br/><br/>
 
+    <?= $form->field($model, 'contact')->textInput(['maxlength' => true]) ?>
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

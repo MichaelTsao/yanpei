@@ -249,4 +249,14 @@ class Orders extends \yii\db\ActiveRecord
     {
         return isset(Office::$time_section[$this->time_section]) ? Office::$time_section[$this->time_section] : '';
     }
+
+    public function afterSave($insert, $changedAttributes)
+    {
+        if ($insert && $this->hospital_id) {
+            $hospital = Hospital::findOne($this->hospital_id);
+            if ($hospital && $hospital->contact) {
+                Sms::send($hospital->contact, '您所在的验配中心有新的预约,请检查');
+            }
+        }
+    }
 }

@@ -19,7 +19,7 @@ class HospitalSearch extends Hospital
     {
         return [
             [['hospital_id'], 'integer'],
-            [['name', 'icon', 'location'], 'safe'],
+            [['name', 'icon', 'location', 'contact'], 'safe'],
         ];
     }
 

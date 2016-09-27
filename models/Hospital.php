@@ -13,6 +13,7 @@ use yii\web\UploadedFile;
  * @property string $icon
  * @property string $location
  * @property string $desc
+ * @property string $contact
  */
 class Hospital extends \yii\db\ActiveRecord
 {
@@ -32,7 +33,7 @@ class Hospital extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'location', 'icon', 'desc'], 'string', 'max' => 200],
+            [['name', 'location', 'icon', 'desc', 'contact'], 'string', 'max' => 200],
             [['iconFile'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg', 'maxSize' => 1024 * 1024 * 10],
         ];
     }
@@ -49,6 +50,7 @@ class Hospital extends \yii\db\ActiveRecord
             'iconFile' => '图片',
             'location' => '地址',
             'desc' => '描述',
+            'contact' => '联系人',
         ];
     }
 
