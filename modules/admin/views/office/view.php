@@ -68,6 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'height': '150px',
             showLine: false,
             axisY: {
+                offset: 100,
                 onlyInteger: true,
                 labelInterpolationFnc: function (value) {
                     return date_section[value];
