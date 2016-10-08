@@ -54,7 +54,8 @@ class OrdersController extends Controller
 
         Export::make($dataProvider->query,
             ['order_id', 'doctorName', 'userName', 'serviceName', 'productName', 'hospitalName', 'officeName',
-                'sectionName', 'statusName', 'appoint_date', 'ctime', 'accept_time', 'pay_time', 'close_time']);
+                'sectionName', 'statusName', 'appoint_date', 'ctime', 'accept_time', 'pay_time', 'close_time'],
+            ['doctorName']);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
