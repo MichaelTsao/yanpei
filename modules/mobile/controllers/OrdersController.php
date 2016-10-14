@@ -53,7 +53,12 @@ class OrdersController extends Controller
         $keyPro = "order_product:$doctor_id:$id";
         $products = Yii::$app->redis->zRange($keyPro, 0, -1, 1);
 
-        if (!isset($order['service']) || !isset($order['hospital'])) {
+        if (!isset($order['service'])
+            || !isset($order['hospital'])
+            || !isset($order['office_id'])
+            || !isset($order['appoint_date'])
+            || !isset($order['time_section'])
+        ) {
             return $this->redirect('/m/doctor/buy/' . $id);
         }
 
