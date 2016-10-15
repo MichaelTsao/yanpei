@@ -44,7 +44,9 @@ $this->params['breadcrumbs'][] = $this->title;
             &nbsp;&nbsp;
             <span class="badge"><?= count($chat); ?></span>
             &nbsp;&nbsp;
-            <?= Html::a('导出', '/res/data.xlsx', ['class' => 'btn btn-default']) ?>
+            <?php if (Yii::$app->account->can('write')): ?>
+                <?= Html::a('导出', '/res/data.xlsx', ['class' => 'btn btn-default']) ?>
+            <?php endif ?>
         </h3>
     </div>
     <div class="panel-body">
