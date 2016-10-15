@@ -29,6 +29,25 @@ class StoreController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+            'access' => [
+                'class' => \yii\filters\AccessControl::className(),
+                'user' => 'account',
+                'rules' => [
+                    [
+                        'actions' => ['index', 'view'],
+                        'allow' => true,
+                        'roles' => ['viewer', 'admin'],
+                    ],
+                    [
+                        'actions' => ['create', 'update', 'delete'],
+                        'allow' => true,
+                        'roles' => ['admin'],
+                    ],
+                ],
+                'denyCallback' => function($rule, $action){
+                    return $this->redirect(['index']);
+                }
+            ],
         ];
     }
 

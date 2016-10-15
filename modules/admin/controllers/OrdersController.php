@@ -35,8 +35,14 @@ class OrdersController extends Controller
                 'user' => 'account',
                 'rules' => [
                     [
+                        'actions' => ['index', 'view'],
                         'allow' => true,
-                        'roles' => ['@'],
+                        'roles' => ['viewer', 'admin'],
+                    ],
+                    [
+                        'actions' => ['create', 'update', 'delete'],
+                        'allow' => true,
+                        'roles' => ['admin'],
                     ],
                 ],
             ],

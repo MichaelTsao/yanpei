@@ -96,8 +96,8 @@
 <div class="footer">
     <ul>
         <li>Copyright © 2014 - <?= date('Y'); ?> e听网</li>
-        <li>地址：北京市某地</li>
-        <li>ICP 12345ABC</li>
+<!--        <li>地址：北京市某地</li>-->
+<!--        <li>ICP 12345ABC</li>-->
     </ul>
 </div>
 

@@ -16,8 +16,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= ''//Html::a(Yii::t('app', 'Create') . Yii::t('app', 'Orders'), ['create'], ['class' => 'btn btn-success'])   ?>
-        <?= Html::a('导出', '/res/data.xlsx', ['class' => 'btn btn-default']) ?>
+        <?= ''//Html::a(Yii::t('app', 'Create') . Yii::t('app', 'Orders'), ['create'], ['class' => 'btn btn-success'])    ?>
+        <?php if (Yii::$app->account->can('write')): ?>
+            <?= Html::a('导出', '/res/data.xlsx', ['class' => 'btn btn-default']) ?>
+        <?php endif ?>
     </p>
 
     <?= GridView::widget([
@@ -40,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => '服务',
             ],
             [
-                'value' => function($data){
+                'value' => function ($data) {
                     $p = [];
                     foreach ($data->products as $item) {
                         $p[] = $item->product->name;
@@ -51,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'status',
-                'value' => function($data){
+                'value' => function ($data) {
                     return \app\models\Orders::$statusList[$data->status];
                 },
                 'filter' => \app\models\Orders::$statusList,

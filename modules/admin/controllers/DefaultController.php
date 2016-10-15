@@ -22,17 +22,6 @@ class DefaultController extends Controller
                 ],
                 'user' => 'account',
             ],
-            'access' => [
-                'class' => \yii\filters\AccessControl::className(),
-                'except' => ['login'],
-                'user' => 'account',
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
         ];
     }
 

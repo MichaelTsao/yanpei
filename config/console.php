@@ -34,6 +34,9 @@ $config = [
 //                'encryption' => 'tls',
             ],
         ],
+        'authManager' => [
+            'class' => 'yii\rbac\PhpManager',
+        ],
     ],
     'params' => $params,
     /*

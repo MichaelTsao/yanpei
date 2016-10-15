@@ -17,9 +17,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create') . Yii::t('app', 'User'), ['create'], ['class' => 'btn btn-success']) ?>
-        &nbsp;&nbsp;
-        <?= Html::a('导出', '/res/data.xlsx', ['class' => 'btn btn-default']) ?>
+        <?php if (Yii::$app->account->can('write')): ?>
+            <?= Html::a(Yii::t('app', 'Create') . Yii::t('app', 'User'), ['create'], ['class' => 'btn btn-success']) ?>
+            &nbsp;&nbsp;
+            <?= Html::a('导出', '/res/data.xlsx', ['class' => 'btn btn-default']) ?>
+        <?php endif ?>
     </p>
 
     <?= GridView::widget([
@@ -42,14 +44,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function ($data, $row) {
                     if ($data->icon) {
                         return Html::img($data->icon, ['height' => 50]);
-                    }else{
+                    } else {
                         return '';
                     }
                 }
             ],
             [
                 'attribute' => 'doctor',
-                'value' => function($data){
+                'value' => function ($data) {
                     return $data->doctor ? '是' : '否';
                 },
                 'label' => '是否验配师',
@@ -66,7 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'template' => '{view} {update} {delete} {doctor}',
                 'buttons' => [
                     'doctor' => function ($url, $model, $key) {
-                        return !$model->doctor ? Html::a('<span class="glyphicon glyphicon-education"></span>', '/admin/doctor/create/'.$model->uid) : '';
+                        return !$model->doctor ? Html::a('<span class="glyphicon glyphicon-education"></span>', '/admin/doctor/create/' . $model->uid) : '';
                     },
                 ],
             ],

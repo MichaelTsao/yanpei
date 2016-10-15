@@ -35,10 +35,19 @@ class DoctorController extends Controller
                 'user' => 'account',
                 'rules' => [
                     [
+                        'actions' => ['index', 'view'],
                         'allow' => true,
-                        'roles' => ['@'],
+                        'roles' => ['viewer', 'admin'],
+                    ],
+                    [
+                        'actions' => ['create', 'update', 'delete', 'up', 'down', 'top'],
+                        'allow' => true,
+                        'roles' => ['admin'],
                     ],
                 ],
+                'denyCallback' => function($rule, $action){
+                    return $this->redirect(['index']);
+                }
             ],
         ];
     }

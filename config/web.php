@@ -78,6 +78,9 @@ $config = [
             'database' => 6,
             'keyPrefix' => 'yp',
         ],
+        'authManager' => [
+            'class' => 'yii\rbac\PhpManager',
+        ],
     ],
     'params' => $params,
     'modules' => [
