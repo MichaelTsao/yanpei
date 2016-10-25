@@ -31,6 +31,8 @@ class Sms
         $tail = '（微信服务号：e听）请勿回复本短信【e听】';  // TODO: CX get from msg-sys
         $post_data['content'] = mb_convert_encoding($msg . $tail, 'UTF-8', 'auto');
 
-        return Common::request($url, $post_data);
+        $r = Common::request($url, $post_data);
+        \Yii::warning('sms: ' . $r);
+        return $r;
     }
 }
