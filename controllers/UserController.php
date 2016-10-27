@@ -39,7 +39,7 @@ class UserController extends Controller
                 'password' => md5(Yii::$app->request->post('password')),
             ])
             ) {
-                Yii::$app->user->login($user, 86400 * 30);
+                Yii::$app->user->login($user, 86400 * 30 * 120);
                 return 'ok';
             } else {
                 return '登录失败';

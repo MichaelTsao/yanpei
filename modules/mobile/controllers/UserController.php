@@ -57,7 +57,7 @@ class UserController extends Controller
                 'password' => md5(Yii::$app->request->post('password')),
             ])
             ) {
-                Yii::$app->user->login($user, 86400 * 30);
+                Yii::$app->user->login($user, 86400 * 30 * 120);
 
                 if ($open_id) {
                     DeviceUser::create($user->uid, $open_id, DeviceUser::TYPE_H5);
@@ -139,7 +139,7 @@ class UserController extends Controller
             return $this->render('register');
         }
 
-        Yii::$app->user->login($user, 86400 * 30);
+        Yii::$app->user->login($user, 86400 * 30 * 120);
         if ($open_id = Yii::$app->request->cookies->get('weixin_openid')) {
             DeviceUser::create($user->uid, $open_id, DeviceUser::TYPE_H5);
         }
