@@ -43,11 +43,7 @@ class DoctorController extends Controller
     {
         $this->view->params['keyword'] = $keyword;
         if (!Yii::$app->user->isGuest && Yii::$app->user->identity->doctor) {
-            $list = Chat::find()
-                ->joinWith('user')
-                ->where(['doctor_id' => Yii::$app->user->id])
-                ->andWhere(['like', 'user.name', $keyword])
-                ->orderBy(['last_time' => SORT_DESC])->all();
+            $list = Chat::getList(Yii::$app->user->id, $keyword);
             return $this->render('chat-list', ['data' => $list]);
         }else{
             $data = Doctor::find()->where(['like', 'name', $keyword])->all();
@@ -119,7 +115,7 @@ class DoctorController extends Controller
 
     public function actionChatList()
     {
-        $list = Chat::find()->where(['doctor_id' => Yii::$app->user->id])->orderBy(['last_time' => SORT_DESC])->all();
+        $list = Chat::getList(Yii::$app->user->id);
         return $this->render('chat-list', ['data' => $list]);
     }
 

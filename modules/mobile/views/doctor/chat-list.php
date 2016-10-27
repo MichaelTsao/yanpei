@@ -7,6 +7,15 @@
  */
 ?>
 
+<div class="H-main-top">
+    <p class="clearfix">
+        <span><img src="/res/img/seach-imgs.png" alt=""/></span>
+        <span>
+            <input type="text" id="keyword" placeholder="搜索" value="<?= isset($keyword) ? $keyword : '' ?>" onkeypress="search()" />
+        </span>
+    </p>
+</div>
+
 <?php if (isset($data)): ?>
     <?php foreach ($data as $item): ?>
         <?php $user = \app\models\User::findOne($item->uid) ?>
@@ -28,3 +37,24 @@
     <?= ''//$this->render('/template/page', ['data' => $data]); ?>
 <?php endif; ?>
 
+<script>
+
+    function search() {
+        var word = $('#keyword').val();
+        if (word != '') {
+            var url = 'http://' + window.location.host + '/m/doctor/chat-list/' + word;
+        }else{
+            var url = 'http://' + window.location.host + '/m';
+        }
+        window.location.href = url;
+        return false;
+    }
+
+    function pressEnter() {
+        if (window.event.keyCode == 13) {
+            search();
+            return false;
+        }
+    }
+
+</script>

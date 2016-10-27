@@ -64,4 +64,16 @@ class Chat extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['uid' => 'uid']);
     }
+
+    public static function getList($doctorId, $userName = '')
+    {
+        $query = Chat::find()
+            ->where(['doctor_id' => $doctorId])
+            ->orderBy(['last_time' => SORT_DESC]);
+        if ($userName) {
+            $query->joinWith('user')
+                ->andWhere(['like', 'user.name', $userName]);
+        }
+        return $query->all();
+    }
 }

@@ -102,10 +102,10 @@ class DoctorController extends Controller
         return $this->render('buy', $param);
     }
 
-    public function actionChatList()
+    public function actionChatList($keyword = '')
     {
-        $list = Chat::find()->where(['doctor_id' => Yii::$app->user->id])->orderBy(['last_time' => SORT_DESC])->all();
-        return $this->render('chat-list', ['data' => $list]);
+        $list = Chat::getList(Yii::$app->user->id, $keyword);
+        return $this->render('chat-list', ['data' => $list, 'keyword' => $keyword]);
     }
 
     public function actionChat($id)
