@@ -41,10 +41,11 @@
 
     function search() {
         var word = $('#keyword').val();
+        var url = '';
         if (word != '') {
-            var url = 'http://' + window.location.host + '/m/doctor/chat-list/' + word;
+            url = 'http://' + window.location.host + '/m/doctor/chat-list/' + word;
         }else{
-            var url = 'http://' + window.location.host + '/m';
+            url = 'http://' + window.location.host + '/m';
         }
         window.location.href = url;
         return false;
