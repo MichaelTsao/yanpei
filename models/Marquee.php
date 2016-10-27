@@ -43,7 +43,7 @@ class Marquee extends \yii\db\ActiveRecord
             [['image'], 'string', 'max' => 500],
             [['url'], 'string', 'max' => 1000],
             [['imageFile'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg', 'maxSize' => 1024 * 1024 * 10],
-];
+        ];
     }
 
     /**
@@ -93,5 +93,10 @@ class Marquee extends \yii\db\ActiveRecord
         }
 
         return parent::beforeValidate();
+    }
+
+    public static function getImages()
+    {
+        return self::find()->where(['status' => self::STATUS_OK])->orderBy(['sort' => SORT_ASC])->all();
     }
 }

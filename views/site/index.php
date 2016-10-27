@@ -1,4 +1,4 @@
-<?php if ($images): ?>
+<?php if ($images = \app\models\Marquee::getImages()): ?>
     <div class="H-banner">
         <!--轮播图-->
         <div class="main_visual">

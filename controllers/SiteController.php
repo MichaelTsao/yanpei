@@ -72,8 +72,7 @@ class SiteController extends Controller
 //            $doctor = $doctor->andWhere(['not in', 'uid', $chat_doctor]);
 //        }
         $data = array_merge($data, $doctor->all());
-        $images = Marquee::find()->where(['status' => Marquee::STATUS_OK])->orderBy(['sort' => SORT_ASC])->all();
         $this->view->params['isYanpei'] = 1;
-        return $this->render('index', ['data' => $data, 'images' => $images]);
+        return $this->render('index', ['data' => $data]);
     }
 }
