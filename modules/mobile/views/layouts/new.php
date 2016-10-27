@@ -42,7 +42,7 @@
 
 <?php if (Yii::$app->controller->id == 'doctor' && Yii::$app->controller->action->id == 'info'): ?>
     <div class="doctor-introduction-button">
-        <a href="/m/doctor/chat/<?= $this->params['doctor_info']->uid ?>">立即预约</a>
+        <a href="/m/doctor/chat/<?= $this->params['doctor_info']->uid ?>">咨询预约</a>
     </div>
 <?php else: ?>
     <footer>

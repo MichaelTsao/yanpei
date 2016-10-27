@@ -31,7 +31,7 @@
                             <span><?= \app\models\Fav::getCount($item->uid); ?>人收藏</span>
                             <span>已接订单数<?= \app\models\Orders::getCount($item->uid); ?></span>
                         </a>
-                        <a href="#n">立即预约</a>
+                        <a href="#n">咨询预约</a>
                     </div>
                 </dd>
             </dl>

@@ -49,7 +49,7 @@
                                     <span
                                         class="H-mian-order-number">已接订单数 <b><?= \app\models\Orders::getCount($item->uid); ?></b></span>
                                 </a>
-                                <a href="/doctor/info/<?= $item->uid ?>" class="H-appointment-btn">立即预约</a>
+                                <a href="/doctor/info/<?= $item->uid ?>" class="H-appointment-btn">咨询预约</a>
                             </div>
                         </dd>
                     </dl>
