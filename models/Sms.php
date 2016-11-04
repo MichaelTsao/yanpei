@@ -8,31 +8,23 @@
 
 namespace app\models;
 
-use app\models\base\Common;
+use yii\httpclient\Client;
 
 class Sms
 {
-    public static function send($phone, $msg)
+    public static function send($phone, $msg = '')
     {
-        $url = 'http://xtx.telhk.cn:8080/sms.aspx?action=send';
-
-        $post_data = [];
-        $post_data['account'] = 'a10322';
-        $post_data['password'] = '454124';
-        $post_data['userid'] = '5778';
-        $post_data['sendTime'] = '';
-
-        if (is_array($phone)) {
-            $post_data['mobile'] = implode(',', $phone);
-        } else {
-            $post_data['mobile'] = $phone;
-        }
-
-        $tail = '（微信服务号：e听）请勿回复本短信【e听】';  // TODO: CX get from msg-sys
-        $post_data['content'] = mb_convert_encoding($msg . $tail, 'UTF-8', 'auto');
-
-        $r = Common::request($url, $post_data);
-        \Yii::warning('sms: ' . $r);
-        return $r;
+        $client = new Client();
+        $response = $client->createRequest()
+            ->setMethod('post')
+            ->setUrl('https://api.leancloud.cn/1.1/requestSmsCode')
+            ->setFormat(Client::FORMAT_JSON)
+            ->setData(['mobilePhoneNumber' => $phone, 'template' => '获取验证码', 'code' => '1234', 'ttl' => 1])
+            ->addHeaders([
+                'X-LC-Id' => 'LzdETQ4Wzu6jAImixLPSgLQ5-gzGzoHsz',
+                'X-LC-Key' => 'juJOv92RpK8TJmiXOISmka4I',
+            ])
+            ->send();
+        return $response->isOk;
     }
 }

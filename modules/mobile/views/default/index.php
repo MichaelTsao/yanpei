@@ -42,11 +42,12 @@
 <script>
 
     function search() {
+        var url = '';
         var word = $('#keyword').val();
         if (word != '') {
-            var url = 'http://' + window.location.host + '/m/search/' + word;
+            url = 'http://' + window.location.host + '/m/search/' + word;
         }else{
-            var url = 'http://' + window.location.host + '/m';
+            url = 'http://' + window.location.host + '/m';
         }
         window.location.href = url;
         return false;

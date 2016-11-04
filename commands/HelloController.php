@@ -7,6 +7,7 @@
 
 namespace app\commands;
 
+use app\models\Sms;
 use yii\console\Controller;
 use Yii;
 
@@ -34,5 +35,10 @@ class HelloController extends Controller
             ->setHtmlBody('<b>HTML content</b>')
             ->send();
         echo $message . "\n";
+    }
+
+    public function actionTest()
+    {
+        Sms::send('13501123150');
     }
 }
