@@ -39,6 +39,11 @@ class HelloController extends Controller
 
     public function actionTest()
     {
-        Sms::send('13501123150');
+        var_dump(Sms::send('13501123150', Sms::SEND_CODE));
+    }
+
+    public function actionVerify($code)
+    {
+        var_dump(Sms::verify('13501123150', $code));
     }
 }

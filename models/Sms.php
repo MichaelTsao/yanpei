@@ -9,20 +9,40 @@
 namespace app\models;
 
 use yii\httpclient\Client;
+use Yii;
 
 class Sms
 {
-    public static function send($phone, $msg = '')
+    const SEND_CODE = '获取验证码';
+    const NEW_ORDER = '新订单通知';
+    const NEW_APPOINT = '新预约通知';
+
+    public static function send($phone, $template)
     {
         $client = new Client();
         $response = $client->createRequest()
             ->setMethod('post')
             ->setUrl('https://api.leancloud.cn/1.1/requestSmsCode')
             ->setFormat(Client::FORMAT_JSON)
-            ->setData(['mobilePhoneNumber' => $phone, 'template' => '获取验证码', 'code' => '1234', 'ttl' => 1])
+            ->setData(['mobilePhoneNumber' => $phone, 'template' => $template])
             ->addHeaders([
-                'X-LC-Id' => 'LzdETQ4Wzu6jAImixLPSgLQ5-gzGzoHsz',
-                'X-LC-Key' => 'juJOv92RpK8TJmiXOISmka4I',
+                'X-LC-Id' => Yii::$app->params['lean_cloud_id'],
+                'X-LC-Key' => Yii::$app->params['lean_cloud_key'],
+            ])
+            ->send();
+        return $response->isOk;
+    }
+
+    public static function verify($phone, $code)
+    {
+        $client = new Client();
+        $response = $client->createRequest()
+            ->setMethod('post')
+            ->setUrl("https://api.leancloud.cn/1.1/verifySmsCode/$code?mobilePhone=$phone")
+            ->setFormat(Client::FORMAT_JSON)
+            ->addHeaders([
+                'X-LC-Id' => Yii::$app->params['lean_cloud_id'],
+                'X-LC-Key' => Yii::$app->params['lean_cloud_key'],
             ])
             ->send();
         return $response->isOk;

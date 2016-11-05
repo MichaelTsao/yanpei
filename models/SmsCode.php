@@ -100,27 +100,18 @@ class SmsCode extends Model
             return false;
         }
 
-        if (!$this->cachedCode) {
-            $this->cachedCode = rand(100000, 999999);
-        }
-        Sms::send($this->phone, "本次验证码是" . $this->cachedCode . "（" . $this->exist_time . "分钟内有效），请尽快完成验证。");
+        Sms::send($this->phone, Sms::SEND_CODE);
+
         Yii::$app->redis->incr($this->limitKey);
         Yii::$app->redis->expire($this->limitKey, 600);
         return true;
     }
 
-    public function check($del = false)
+    public function check()
     {
-        if ($this->validate()) {
-            if ($del) {
-                Yii::$app->redis->del($this->codeKey);
-            }
-            if ($this->code != $this->cachedCode) {
-                $this->addError('code', '验证码错误');
-                return false;
-            }
-            return true;
+        if (!$this->validate()) {
+            return false;
         }
-        return false;
+        return Sms::verify($this->phone, $this->code);
     }
 }

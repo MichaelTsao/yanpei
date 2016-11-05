@@ -192,7 +192,7 @@ class Orders extends \yii\db\ActiveRecord
         $content = '';
         switch ($this->status) {
             case self::STATUS_NEW:
-                $content = '有新订单,请登录后台查看';
+                $content = Sms::SEND_CODE;
                 break;
         }
         if ($content) {
@@ -255,7 +255,7 @@ class Orders extends \yii\db\ActiveRecord
         if ($insert && $this->hospital_id) {
             $hospital = Hospital::findOne($this->hospital_id);
             if ($hospital && $hospital->contact) {
-                Sms::send($hospital->contact, '您所在的验配中心有新的预约,请检查');
+                Sms::send($hospital->contact, Sms::NEW_APPOINT);
             }
         }
     }
