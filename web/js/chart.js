@@ -2,7 +2,7 @@
  * Created by caoxiang on 16/8/22.
  */
 
-function chart_init(){
+function chart_init(date_section){
     var options = {
         'height': '150px',
         showLine: false,
