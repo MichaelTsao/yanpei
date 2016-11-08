@@ -56,38 +56,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="ct-chart ct-perfect-fourth"></div>
     <script>
-        var date_section = {
-        <?php foreach (\app\models\Office::$time_section as $id => $value): ?>
-        <?=$id?>:
-        '<?=$value?>',
-        <?php endforeach?>
-        }
-        ;
-
-        var options = {
-            'height': '150px',
-            showLine: false,
-            axisY: {
-                offset: 100,
-                onlyInteger: true,
-                labelInterpolationFnc: function (value) {
-                    return date_section[value];
-                }
-            },
-            axisX: {
-                labelInterpolationFnc: function (value) {
-                    if (value == 0) {
-                        return '时间段';
-                    } else {
-                        return value;
-                    }
-                }
-            }
-        };
-
-        var chart = new Chartist.Line('.ct-chart', null, options);
+        var date_section = <?= json_encode(\app\models\Office::$time_section) ?>;
+        var chart = null;
     </script>
 <?php
+$this->registerJsFile('/js/chartist/chartist.min.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 $this->registerJsFile('/js/chart.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
-$this->registerJs('chart_change(' . $model->office_id . ');');
+$this->registerJs('chart_init(); chart_change(' . $model->office_id . ');');
+$this->registerCssFile("/js/chartist/chartist.min.css");
 ?>

@@ -2,6 +2,31 @@
  * Created by caoxiang on 16/8/22.
  */
 
+function chart_init(){
+    var options = {
+        'height': '150px',
+        showLine: false,
+        axisY: {
+            offset: 100,
+            onlyInteger: true,
+            labelInterpolationFnc: function (value) {
+                return date_section[value];
+            }
+        },
+        axisX: {
+            labelInterpolationFnc: function (value) {
+                if (value == 0) {
+                    return '时间段';
+                } else {
+                    return value;
+                }
+            }
+        }
+    };
+
+    chart = new Chartist.Line('.ct-chart', null, options);
+}
+
 function chart_change(office_id) {
     var year = $('#year').val();
     var month = $('#month').val();

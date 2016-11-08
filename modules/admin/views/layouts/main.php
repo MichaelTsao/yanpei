@@ -21,9 +21,6 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode(Yii::$app->params['site_name'] . ' 后台') ?></title>
     <?php $this->head() ?>
-    <script src="/js/chartist/chartist.min.js"></script>
-    <link rel="stylesheet"
-          href="/js/chartist/chartist.min.css">
 </head>
 <body>
 <?php $this->beginBody() ?>
