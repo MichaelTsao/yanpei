@@ -56,7 +56,7 @@
                     </a>
                 </li>
                 <li class="H-footer-find">
-                    <a href="/m/data/list" class="footer-li-a">
+                    <a href="/m/data/type" class="footer-li-a">
                     <span
                         class="icon2<?php if (isset($this->params['isDataList'])) echo ' active' ?>"><span></span></span>
                         <span class="name<?php if (isset($this->params['isDataList'])) echo ' high' ?>">验配知识</span>

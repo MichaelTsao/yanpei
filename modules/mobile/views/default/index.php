@@ -2,13 +2,15 @@
     <p class="clearfix">
         <span><img src="/res/img/seach-imgs.png" alt=""/></span>
         <span>
-            <input type="text" id="keyword" placeholder="搜索" value="<?= isset($keyword) ? $keyword : '' ?>" onkeypress="search()" />
+            <input type="text" id="keyword" placeholder="搜索" value="<?= isset($keyword) ? $keyword : '' ?>"
+                   onkeypress="search()"/>
         </span>
     </p>
 </div>
 
 <?php foreach ($data as $item): ?>
-    <div class="H-mian-con" onclick="window.location.href='<?= \yii\helpers\Url::to(['doctor/' . $item->uid]); ?>';return false;">
+    <div class="H-mian-con"
+         onclick="window.location.href='<?= \yii\helpers\Url::to(['doctor/' . $item->uid]); ?>';return false;">
         <div>
             <dl>
                 <dt>
@@ -46,7 +48,7 @@
         var word = $('#keyword').val();
         if (word != '') {
             url = 'http://' + window.location.host + '/m/search/' + word;
-        }else{
+        } else {
             url = 'http://' + window.location.host + '/m';
         }
         window.location.href = url;

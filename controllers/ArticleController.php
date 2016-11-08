@@ -9,11 +9,12 @@
 namespace app\controllers;
 
 use app\models\Article;
+use app\models\ArticleType;
 use yii\web\Controller;
 
 class ArticleController extends Controller
 {
-    public function actionList($id=0)
+    public function actionList($id = 0)
     {
         $this->view->params['isKnow'] = true;
         $m = Article::find();
@@ -35,5 +36,12 @@ class ArticleController extends Controller
     {
         $this->view->params['isKnow'] = true;
         return $this->render('info', ['id' => $id]);
+    }
+
+    public function actionType()
+    {
+        $this->view->params['isDataList'] = true;
+        $data = ArticleType::find()->all();
+        return $this->render('type', ['data' => $data]);
     }
 }
