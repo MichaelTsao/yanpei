@@ -54,7 +54,8 @@ $this->registerCssFile("/js/chartist/chartist.min.css");
         <option value="2016" <?php if (date('Y') == 2016) echo 'selected' ?>>2016</option>
         <option value="2017" <?php if (date('Y') == 2017) echo 'selected' ?>>2017</option>
         <option value="2018" <?php if (date('Y') == 2018) echo 'selected' ?>>2018</option>
-    </select> 年
+    </select>
+    年
     &nbsp;
     <select onchange="chart_change(<?= $model->office_id ?>)" id="month">
         <?php for ($i = 1; $i <= 12; $i++): ?>
