@@ -32,11 +32,12 @@ class CaseController extends Controller
                 $can_create = false;
             }
         } else {
-            if ($data = Cases::find()->where(['uid' => Yii::$app->user->id, 'doctor_id' => null])->all()) {
-                $can_create = false;
-            } else {
-                $can_create = true;
-            }
+            $can_create = true;
+//            if ($data = Cases::find()->where(['uid' => Yii::$app->user->id, 'doctor_id' => null])->all()) {
+//                $can_create = false;
+//            } else {
+//                $can_create = true;
+//            }
         }
         return $this->render('list', ['data' => $data, 'id' => $id, 'can_create' => $can_create]);
     }
