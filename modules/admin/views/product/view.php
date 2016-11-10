@@ -5,6 +5,10 @@ use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Product */
+/* @var $scope string */
+/* @var $feature string */
+/* @var $brandList array */
+/* @var $productTypeList array */
 
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Products'), 'url' => ['index']];
@@ -30,6 +34,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'product_id',
             'name',
+            [
+                'attribute' => 'type',
+                'value' => isset($productTypeList[$model->type]) ? $productTypeList[$model->type] : '',
+            ],
             'price',
             [
                 'attribute' => 'icon',

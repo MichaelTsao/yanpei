@@ -18,6 +18,9 @@ use yii\jui\Sortable;
             <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-md-2">
+            <?= $form->field($model, 'type')->dropDownList(\app\models\ProductType::getList()) ?>
+        </div>
+        <div class="col-md-2">
             <?= $form->field($model, 'price')->textInput() ?>
         </div>
         <div class="col-md-2">

@@ -5,6 +5,7 @@ namespace app\modules\admin\controllers;
 use app\models\Brand;
 use app\models\Feature;
 use app\models\ProductFeature;
+use app\models\ProductType;
 use Yii;
 use app\models\Product;
 use app\modules\admin\models\ProductSearch;
@@ -67,6 +68,7 @@ class ProductController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'brandList' => Brand::getList(),
+            'productTypeList' => ProductType::getList(),
         ]);
     }
 
@@ -90,6 +92,7 @@ class ProductController extends Controller
         return $this->render('view', [
             'model' => $model,
             'brandList' => Brand::getList(),
+            'productTypeList' => ProductType::getList(),
             'scope' => implode(' ', $scope),
             'feature' => implode(' ', $feature),
         ]);

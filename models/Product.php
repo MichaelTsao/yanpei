@@ -10,11 +10,13 @@ use Yii;
  *
  * @property integer $product_id
  * @property string $name
+ * @property integer $type
  * @property integer $price
  * @property string $icon
  * @property integer $brand
  * @property string $battery
  * @property string $info
+ * @property integer $sort
  */
 class Product extends \yii\db\ActiveRecord
 {
@@ -38,7 +40,7 @@ class Product extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['price', 'brand'], 'integer'],
+            [['price', 'brand', 'type', 'sort'], 'integer'],
             [['name', 'icon', 'battery'], 'string', 'max' => 200],
             [['iconFile'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg', 'maxSize' => 1024 * 1024 * 10],
             [['info'], 'string'],
@@ -54,6 +56,7 @@ class Product extends \yii\db\ActiveRecord
         return [
             'product_id' => '产品ID',
             'name' => '名字',
+            'type' => '分类',
             'price' => '价格',
             'icon' => '图片',
             'iconFile' => '图标',
@@ -64,6 +67,7 @@ class Product extends \yii\db\ActiveRecord
             'scopes' => '验配范围',
             'feature' => '功能点',
             'scope' => '验配范围',
+            'sort' => '排序',
         ];
     }
 

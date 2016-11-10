@@ -6,6 +6,8 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\admin\models\ProductSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $brandList array */
+/* @var $productTypeList \app\models\ProductType[] */
 
 $this->title = Yii::t('app', 'Products');
 $this->params['breadcrumbs'][] = $this->title;
@@ -28,12 +30,19 @@ $this->params['breadcrumbs'][] = $this->title;
             'product_id',
             [
                 'attribute' => 'brand',
-                'value' => function ($data) use ($brandList) {
+                'value' => function (\app\models\Product $data) use ($brandList) {
                     return isset($brandList[$data->brand]) ? $brandList[$data->brand] : '';
                 },
                 'filter' => $brandList,
             ],
             'name',
+            [
+                'attribute' => 'type',
+                'value' => function (\app\models\Product $data) use ($productTypeList) {
+                    return isset($productTypeList[$data->type]) ? $productTypeList[$data->type] : '';
+                },
+                'filter' => $productTypeList,
+            ],
             'price',
             [
                 'attribute' => 'icon',

@@ -40,4 +40,9 @@ class ProductType extends \yii\db\ActiveRecord
             'name' => '名字',
         ];
     }
+
+    public static function getList()
+    {
+        return static::find()->select(['name'])->indexBy('id')->asArray()->column();
+    }
 }
