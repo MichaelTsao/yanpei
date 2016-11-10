@@ -19,7 +19,7 @@ class AccountSearch extends Account
     {
         return [
             [['id', 'status'], 'integer'],
-            [['username', 'password'], 'safe'],
+            [['username', 'password', 'role'], 'safe'],
         ];
     }
 
@@ -59,6 +59,10 @@ class AccountSearch extends Account
             'id' => $this->id,
             'status' => $this->status,
         ]);
+
+        if ($this->role && $ids = Yii::$app->authManager->getUserIdsByRole($this->role)) {
+            $query->andWhere(['id' => $ids]);
+        }
 
         $query->andFilterWhere(['like', 'username', $this->username])
             ->andFilterWhere(['like', 'password', $this->password]);

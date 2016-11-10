@@ -75,8 +75,10 @@ AppAsset::register($this);
             ],
             ['label' => '首页通栏', 'url' => ['/admin/marquee']],
             ['label' => '常规配置', 'url' => ['/admin/config']],
-            ['label' => '系统账号', 'url' => ['/admin/account']],
         ];
+        if (Yii::$app->account->can('write')) {
+            $menuItems[] = ['label' => '系统账号', 'url' => ['/admin/account']];
+        }
         $menuItems[] = [
             'label' => '登出 (' . Yii::$app->account->identity->username . ')',
             'url' => ['/admin/default/logout'],

@@ -31,4 +31,14 @@ class RbacController extends Controller
         $auth->assign($admin, 2);
         $auth->assign($viewer, 3);
     }
+
+    public function actionGet($uid)
+    {
+        if (!$roles = Yii::$app->authManager->getRolesByUser($uid)){
+            echo 0;
+        }else{
+            echo array_keys($roles)[0];
+        }
+        echo "\n";
+    }
 }

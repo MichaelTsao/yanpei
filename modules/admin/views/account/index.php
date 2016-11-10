@@ -34,6 +34,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
                 'filter' => \app\models\Account::$statusLabel,
             ],
+            [
+                'attribute' => 'role',
+                'value' => function ($data) {
+                    return \app\models\Account::$roles[$data->role];
+                },
+                'filter' => \app\models\Account::$roles,
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

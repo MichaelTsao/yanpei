@@ -13,11 +13,20 @@ use Yii;
  * @property string $password
  * @property string $passwordRaw
  * @property integer $status
+ * @property string $role
  */
 class Account extends \yii\db\ActiveRecord implements IdentityInterface
 {
+    const ROLE_ADMIN = 'admin';
+    const ROLE_VIEWER = 'viewer';
+    public static $roles = [
+        self::ROLE_ADMIN => '管理员',
+        self::ROLE_VIEWER => '普通用户',
+    ];
+
     public $auth_key;
     private $_passwordRaw = '';
+    public $role = null;
 
     const STATUS_CLOSED = 2;
     const STATUS_ACTIVE = 1;
@@ -45,7 +54,9 @@ class Account extends \yii\db\ActiveRecord implements IdentityInterface
             [['password'], 'string', 'max' => 200],
             [['passwordRaw'], 'string', 'max' => 32],
             [['passwordRaw'], 'string', 'min' => 6],
- ];
+            [['role'], 'string', 'max' => 50],
+            ['role', 'in', 'range' => array_keys(self::$roles)],
+        ];
     }
 
     /**
@@ -59,6 +70,7 @@ class Account extends \yii\db\ActiveRecord implements IdentityInterface
             'password' => '密码',
             'passwordRaw' => '密码',
             'status' => '状态',
+            'role' => '角色',
         ];
     }
 
@@ -128,5 +140,20 @@ class Account extends \yii\db\ActiveRecord implements IdentityInterface
     public function getPasswordRaw()
     {
         return $this->_passwordRaw;
+    }
+
+    public function afterFind()
+    {
+        if ($roles = Yii::$app->authManager->getRolesByUser($this->id)) {
+            $this->role = array_keys($roles)[0];
+        }
+    }
+
+    public function afterSave($insert, $changedAttributes)
+    {
+        if ($this->role) {
+            Yii::$app->authManager->revokeAll($this->id);
+            Yii::$app->authManager->assign(Yii::$app->authManager->getRole($this->role), $this->id);
+        }
     }
 }

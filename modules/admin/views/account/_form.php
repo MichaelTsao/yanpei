@@ -22,6 +22,9 @@ use yii\widgets\ActiveForm;
         <div class="col-md-1">
             <?= $form->field($model, 'status')->dropDownList(\app\models\Account::$statusLabel) ?>
         </div>
+        <div class="col-md-2">
+            <?= $form->field($model, 'role')->dropDownList(\app\models\Account::$roles) ?>
+        </div>
     </div>
 
         <div class="form-group">
