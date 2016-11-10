@@ -48,12 +48,12 @@
                     <a href="/user/register" id="reg-button">注册</a>
                 </div>
 
-<!--                <div class="H-pop-list-reg">-->
-<!--                    <div class="H-pop-list-top"></div>-->
-<!--                    <div class="H-pop-list-center clearfix">-->
-<!--                    </div>-->
-<!--                    <div class="H-pop-list-bot"></div>-->
-<!--                </div>-->
+                <!--                <div class="H-pop-list-reg">-->
+                <!--                    <div class="H-pop-list-top"></div>-->
+                <!--                    <div class="H-pop-list-center clearfix">-->
+                <!--                    </div>-->
+                <!--                    <div class="H-pop-list-bot"></div>-->
+                <!--                </div>-->
                 <!--首页未登录过显示的内容区域--end-->
             <?php else: ?>
                 <!--首页登录过后显示的内容区域--start-->
@@ -96,8 +96,8 @@
 <div class="footer">
     <ul>
         <li>Copyright © 2014 - <?= date('Y'); ?> e听网</li>
-<!--        <li>地址：北京市某地</li>-->
-<!--        <li>ICP 12345ABC</li>-->
+        <!--        <li>地址：北京市某地</li>-->
+        <!--        <li>ICP 12345ABC</li>-->
     </ul>
 </div>
 
@@ -106,8 +106,11 @@
     function search() {
         var word = $('#keyword').val();
         if (word != '') {
-            var url = 'http://' + window.location.host + '/doctor/search/' + word;
-            window.location.href = url;
+            <?php if($this->context->id == 'product'):?>
+            window.location.href = 'http://' + window.location.host + '/product/list/' + word;
+            <?php else:?>
+            window.location.href = 'http://' + window.location.host + '/doctor/search/' + word;
+            <?php endif?>
             return false;
         }
     }
