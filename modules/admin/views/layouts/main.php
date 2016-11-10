@@ -57,6 +57,7 @@ AppAsset::register($this);
                     ['label' => '产品列表', 'url' => ['/admin/product']],
                     ['label' => '功能点设置', 'url' => ['/admin/feature']],
                     ['label' => '品牌设置', 'url' => ['/admin/brand']],
+                    ['label' => '分类设置', 'url' => ['/admin/product-type']],
                 ]
             ],
             [

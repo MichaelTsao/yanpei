@@ -8,6 +8,7 @@
 
 return [
     'Update' => '修改',
+    'Update ' => '修改',
     'Create' => '新建',
     'Delete' => '删除',
     'Add' => '新增',
@@ -55,4 +56,8 @@ return [
     'Configs' => '配置',
     'Marquee' => '通栏图片',
     'Marquees' => '通栏图片',
+    'Product Types' => '产品分类',
+    'Product Type' => '产品分类',
+    'Create Product Type' => '新建产品分类',
+    'Update Product Type' => '修改产品分类',
 ];
