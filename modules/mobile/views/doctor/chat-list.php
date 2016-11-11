@@ -11,7 +11,8 @@
     <p class="clearfix">
         <span><img src="/res/img/seach-imgs.png" alt=""/></span>
         <span>
-            <input type="text" id="keyword" placeholder="搜索" value="<?= isset($keyword) ? $keyword : '' ?>" onkeypress="search()" />
+            <input type="text" id="keyword" placeholder="搜索" value="<?= isset($keyword) ? $keyword : '' ?>"
+                   onkeypress="pressEnter()"/>
         </span>
     </p>
 </div>
@@ -34,17 +35,16 @@
             </a>
         </div>
     <?php endforeach; ?>
-    <?= ''//$this->render('/template/page', ['data' => $data]); ?>
+    <?= ''//$this->render('/template/page', ['data' => $data]);  ?>
 <?php endif; ?>
 
 <script>
-
     function search() {
         var word = $('#keyword').val();
         var url = '';
         if (word != '') {
             url = 'http://' + window.location.host + '/m/doctor/chat-list/' + word;
-        }else{
+        } else {
             url = 'http://' + window.location.host + '/m';
         }
         window.location.href = url;
@@ -57,5 +57,4 @@
             return false;
         }
     }
-
 </script>

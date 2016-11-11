@@ -75,7 +75,7 @@ class Product extends \yii\db\ActiveRecord
     {
         $data = ProductFeature::find()->where(['product_id' => $this->product_id])->orderBy(['sort' => SORT_ASC])->all();
         foreach ($data as $item) {
-            if ($feature = Feature::findOne($item->feature_id)){
+            if ($feature = Feature::findOne($item->feature_id)) {
                 if ($feature->type == Feature::TYPE_SCOPE) {
                     $this->scopes[] = $feature->feature_id;
                 }
@@ -141,11 +141,15 @@ class Product extends \yii\db\ActiveRecord
 
     public static function getList()
     {
-        $r = [];
-        $data = self::find()->all();
-        foreach ($data as $item) {
-            $r[$item->product_id] = $item->name;
+        return self::find()->select(['name'])->indexBy('product_id')->asArray()->column();
+    }
+
+    public static function getData($keyword = '')
+    {
+        $query = self::find()->orderBy(['sort' => SORT_DESC]);
+        if ($keyword) {
+            $query->where(['like', 'name', $keyword]);
         }
-        return $r;
+        return $query->all();
     }
 }

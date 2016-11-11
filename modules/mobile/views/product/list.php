@@ -7,6 +7,16 @@
  */
 ?>
 
+<div class="H-main-top">
+    <p class="clearfix">
+        <span><img src="/res/img/seach-imgs.png" alt=""/></span>
+        <span>
+            <input type="text" id="keyword" placeholder="搜索" value="<?= isset($keyword) ? $keyword : '' ?>"
+                   onkeypress="pressEnter()"/>
+        </span>
+    </p>
+</div>
+
 <?php if (isset($data)): ?>
     <?php foreach ($data as $item): ?>
         <a href="/m/product/info/<?= $item->product_id ?>">
@@ -24,6 +34,26 @@
             </div>
         </a>
     <?php endforeach; ?>
-    <?= ''//$this->render('/template/page', ['data' => $data]);  ?>
+    <?= ''//$this->render('/template/page', ['data' => $data]);   ?>
 <?php endif; ?>
 
+<script>
+    function search() {
+        var word = $('#keyword').val();
+        var url = '';
+        if (word != '') {
+            url = 'http://' + window.location.host + '/m/product/list?keyword=' + word;
+        } else {
+            url = 'http://' + window.location.host + '/m/product/list';
+        }
+        window.location.href = url;
+        return false;
+    }
+
+    function pressEnter() {
+        if (window.event.keyCode == 13) {
+            search();
+            return false;
+        }
+    }
+</script>

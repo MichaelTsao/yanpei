@@ -37,11 +37,9 @@ class ProductController extends \yii\web\Controller
         ]);
     }
 
-    public function actionList()
+    public function actionList($keyword = '')
     {
         $this->view->params['isProduct'] = true;
-        $data = Product::find()->orderBy(['sort' => SORT_DESC])->all();
-        return $this->render('list', ['data' => $data]);
+        return $this->render('list', ['data' => Product::getData($keyword), 'keyword' => $keyword]);
     }
-
 }
