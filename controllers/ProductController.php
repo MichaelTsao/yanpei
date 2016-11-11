@@ -14,10 +14,15 @@ use yii\web\Controller;
 
 class ProductController extends Controller
 {
-    public function actionList()
+    public function actionList($keyword = '')
     {
         $this->view->params['isProduct'] = 1;
-        $data = Product::find()->orderBy(['sort' => SORT_DESC])->all();
+        $query = Product::find()->orderBy(['sort' => SORT_DESC]);
+        if ($keyword) {
+            $this->view->params['keyword'] = $keyword;
+            $query->where(['like', 'name', $keyword]);
+        }
+        $data = $query->all();
         return $this->render('list', ['data' => $data]);
     }
 

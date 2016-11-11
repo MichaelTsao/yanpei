@@ -69,6 +69,7 @@ $config = [
                 'admin/<controller:\w+>/<action:[\w-]+>/<id:\d+>' => 'admin/<controller>/<action>',
 
                 'doctor/search/<keyword:\w+>' => 'doctor/search',
+                'product/list/<keyword:\w+>' => 'product/list',
                 '<controller:\w+>/<action:[\w-]+>/<id:\d+>' => '<controller>/<action>',
             ],
         ],
