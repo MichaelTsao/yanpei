@@ -217,7 +217,7 @@ class DoctorController extends Controller
                     'appSecret' => Yii::$app->params['weixin_key'],
                 ]);
                 $data = [
-                    'first' => '您有新的聊天信息',
+                    'first' => '您有来自新的聊天信息',
                     'keyword1' => $name,
                     'keyword2' => date('Y年m月d日 H点i分'),
                     'remark' => '请您尽快查看',

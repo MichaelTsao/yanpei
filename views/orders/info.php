@@ -78,7 +78,7 @@ use app\models\base\Common;
 
                         <?php if ($item->status == \app\models\Orders::STATUS_USER_PAY): ?>
                             <?php if ($item->uid == Yii::$app->user->id): ?>
-                                <a href="/orders/cancel/<?= $item->order_id ?>">完成订单</a>
+                                <a href="/orders/done/<?= $item->order_id ?>">完成订单</a>
                             <?php endif; ?>
                         <?php endif; ?>
                     </div>

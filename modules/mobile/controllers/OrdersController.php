@@ -117,6 +117,21 @@ class OrdersController extends Controller
         return $this->redirect('/m/orders/info/' . $id);
     }
 
+    public function actionDone($id)
+    {
+        if (!$data = Orders::findOne($id)) {
+            return $this->redirect('/m');
+        }
+        if ($data->uid != Yii::$app->user->id) {
+            return $this->redirect('/m');
+        }
+        $data->status = Orders::STATUS_FINISH;
+        $data->close_time = date('Y-m-d H:i:s');
+        $data->save();
+        $data->push();
+        return $this->redirect('/m/orders/info/' . $id);
+    }
+
     public function actionChange($id)
     {
         if (!$data = Orders::findOne($id)) {

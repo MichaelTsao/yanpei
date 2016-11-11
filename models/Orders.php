@@ -143,31 +143,32 @@ class Orders extends \yii\db\ActiveRecord
     public function push()
     {
         $uid = 0;
-        $action = '';
+        $words = '';
         switch ($this->status) {
             case self::STATUS_NEW:
                 $uid = $this->uid;
                 if ($this->isNewRecord) {
                     $action = '建立';
-                }else{
+                } else {
                     $action = '修改';
                 }
+                $words = $this->doctorName . ' 为您' . $action . '了一个订单';
                 break;
             case self::STATUS_USER_CONFIRM:
                 $uid = $this->doctor_id;
-                $action = '确认';
+                $words = $this->userName . ' 确认了订单';
                 break;
             case self::STATUS_USER_PAY:
-                $uid = $this->uid;
-                $action = '付款';
+                $uid = $this->doctor_id;
+                $words = $this->userName . ' 已经为订单付款';
                 break;
             case self::STATUS_FINISH:
                 $uid = $this->doctor_id;
-                $action = '完成';
+                $words = $this->userName . ' 已完成订单';
                 break;
             case self::STATUS_CANCEL:
                 $uid = $this->doctor_id;
-                $action = '取消';
+                $words = $this->userName . ' 已取消订单';
                 break;
         }
         if ($device = DeviceUser::findOne(['uid' => $uid, 'type' => DeviceUser::TYPE_H5])) {
@@ -176,7 +177,7 @@ class Orders extends \yii\db\ActiveRecord
                 'appSecret' => Yii::$app->params['weixin_key'],
             ]);
             $data = [
-                'first' => "您的订单已经$action",
+                'first' => $words,
                 'keyword1' => $this->order_id,
                 'keyword2' => $this->service->name,
                 'keyword3' => $this->price,
@@ -229,7 +230,7 @@ class Orders extends \yii\db\ActiveRecord
     public function getProductName()
     {
         $name = [];
-        foreach ($this->products as $product){
+        foreach ($this->products as $product) {
             $name[] = $product->product->name;
         }
         return implode('|', $name);
