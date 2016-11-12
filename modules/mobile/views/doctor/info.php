@@ -1,3 +1,15 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: caoxiang
+ * Date: 16/7/26
+ * Time: 下午11:58
+ *
+ * @var $info app\models\Doctor
+ * @var $hasFav boolean
+ */
+?>
+
 <div class="doctor-introduction-banner">
     <img src="<?= $info->cover ?>" alt=""/>
     <span id="fav"<?php if ($hasFav) echo ' class="active"'?> onclick="fav()"></span>
@@ -9,6 +21,7 @@
             <span><?= $info->work_location ?></span>
         </h1>
         <p><?= $info->title ?></p>
+        <p><?= $info->school ?> <?= $info->education ?></p>
     </div>
 </div>
 <div class="doctor-service-items">
