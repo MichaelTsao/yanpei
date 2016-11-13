@@ -424,6 +424,9 @@ class User extends CachedActiveRecord implements IdentityInterface
                 }
             }
         }
+        if ($this->isNewRecord) {
+            $this->uid = $this->makeUserId();
+        }
 
         return parent::beforeSave($insert);
     }
@@ -455,7 +458,7 @@ class User extends CachedActiveRecord implements IdentityInterface
         }
         return $this->_doctor;
     }
-    
+
     public static function getList($name = '')
     {
         $d = self::find();
@@ -464,11 +467,16 @@ class User extends CachedActiveRecord implements IdentityInterface
         }
         $d->orderBy(['name' => SORT_ASC]);
         $data = [];
-        foreach ($d->all() as $item){
+        foreach ($d->all() as $item) {
             if (!$item->doctor) {
                 $data[$item->uid] = $item->name;
             }
         }
         return $data;
+    }
+
+    public function makeUserId()
+    {
+        return date('ymdH') . rand(100, 999);
     }
 }

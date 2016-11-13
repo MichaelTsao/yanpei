@@ -8,6 +8,7 @@
 namespace app\commands;
 
 use app\models\Sms;
+use app\models\User;
 use yii\console\Controller;
 use Yii;
 
@@ -45,5 +46,11 @@ class HelloController extends Controller
     public function actionVerify($code)
     {
         var_dump(Sms::verify('13501123150', $code));
+    }
+
+    public function actionChangeUid()
+    {
+        $u = new User();
+        echo $u->makeUserId()."\n";
     }
 }
