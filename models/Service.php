@@ -52,14 +52,12 @@ class Service extends \yii\db\ActiveRecord
             'status' => '状态',
         ];
     }
-    
+
     public static function getList()
     {
-        $r = [];
-        $data = self::findAll(['status' => self::STATUS_ACTIVE]);
-        foreach ($data as $item) {
-            $r[$item->service_id] = $item->name;
-        }
-        return $r;
+        return ['0' => '全部'] + self::find()
+            ->select(['name'])
+            ->where(['status' => self::STATUS_ACTIVE])
+            ->indexBy('service_id')->asArray()->column();
     }
 }

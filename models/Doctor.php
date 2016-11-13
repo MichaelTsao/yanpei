@@ -76,7 +76,7 @@ class Doctor extends \yii\db\ActiveRecord
             [['name', 'cover', 'education', 'school', 'company', 'work_location'], 'string', 'max' => 200],
             [['title'], 'string', 'max' => 100],
             [['remark'], 'string', 'max' => 1000]
-];
+        ];
     }
 
     /**
@@ -138,7 +138,7 @@ class Doctor extends \yii\db\ActiveRecord
 
     public function beforeSave($insert)
     {
-        DoctorService::deleteAll(['uid'=>$this->uid]);
+        DoctorService::deleteAll(['uid' => $this->uid]);
         foreach ($this->services as $service) {
             $ds = new DoctorService();
             $ds->uid = $this->uid;
@@ -186,9 +186,15 @@ class Doctor extends \yii\db\ActiveRecord
         }
         $d->orderBy(['name' => SORT_ASC]);
         $data = [];
-        foreach ($d->all() as $item){
+        foreach ($d->all() as $item) {
             $data[$item->uid] = $item->name;
         }
         return $data;
+    }
+
+    public static function getLocations()
+    {
+        return ['0' => '全部'] + self::find()->select(['work_location'])->distinct()->indexBy('work_location')
+            ->asArray()->column();
     }
 }

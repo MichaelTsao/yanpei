@@ -8,6 +8,19 @@
     </p>
 </div>
 
+<div class="H-main-top">
+    <p class="clearfix">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        地区：<?= \yii\bootstrap\Html::dropDownList('locations', isset($location) ? $location : null,
+            \app\models\Doctor::getLocations()); ?>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        服务项目：<?= \yii\bootstrap\Html::dropDownList('services', isset($service) ? $service : null,
+            \app\models\Service::getList()); ?>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <?= \yii\bootstrap\Html::button('筛选', ['onclick' => 'search()']); ?>
+    </p>
+</div>
+
 <?php foreach ($data as $item): ?>
     <div class="H-mian-con"
          onclick="window.location.href='<?= \yii\helpers\Url::to(['doctor/' . $item->uid]); ?>';return false;">
@@ -46,8 +59,17 @@
     function search() {
         var url = '';
         var word = $('#keyword').val();
-        if (word != '') {
-            url = 'http://' + window.location.host + '/m/search/' + word;
+        var location = $('select[name=locations]').val();
+        var service = $('select[name=services]').val();
+
+        if (word != '' || location != '' || service != '') {
+            url = 'http://' + window.location.host + '/m/doctor/search/?keyword=' + word;
+            if (typeof location != "undefined") {
+                url += '&location=' + location;
+            }
+            if (typeof service != "undefined") {
+                url += '&service=' + service;
+            }
         } else {
             url = 'http://' + window.location.host + '/m';
         }

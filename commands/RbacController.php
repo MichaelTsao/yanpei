@@ -28,8 +28,8 @@ class RbacController extends Controller
         $auth->addChild($admin, $viewer);
 
         $auth->assign($admin, 1);
-        $auth->assign($admin, 2);
-        $auth->assign($viewer, 3);
+//        $auth->assign($admin, 2);
+        $auth->assign($viewer, 2);
     }
 
     public function actionGet($uid)

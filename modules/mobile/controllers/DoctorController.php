@@ -166,10 +166,22 @@ class DoctorController extends Controller
         return $this->render('chat', $param);
     }
 
-    public function actionSearch($keyword = '')
+    public function actionSearch($keyword = '', $location = '', $service = '')
     {
-        $data = Doctor::find()->where(['like', 'name', $keyword])->all();
-        return $this->render('/default/index', ['data' => $data, 'keyword' => $keyword]);
+        $query = Doctor::find();
+        if ($keyword) {
+            $query->andWhere(['like', 'name', $keyword]);
+        }
+        if ($location) {
+            $query->andWhere(['work_location' => $location]);
+        }
+        if ($service) {
+            $ds = DoctorService::find()->where(['service_id' => $service])->select(['uid'])->asArray()->column();
+            $query->andWhere(['uid' => $ds]);
+        }
+        $data = $query->all();
+        return $this->render('/default/index', ['data' => $data, 'keyword' => $keyword,
+            'location' => $location, 'service' => $service]);
     }
 
     public function actionFav($id, $type = 1)

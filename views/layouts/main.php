@@ -105,14 +105,22 @@
 
     function search() {
         var word = $('#keyword').val();
-        if (word != '') {
-            <?php if($this->context->id == 'product'):?>
-            window.location.href = 'http://' + window.location.host + '/product/list/' + word;
-            <?php else:?>
-            window.location.href = 'http://' + window.location.host + '/doctor/search/' + word;
-            <?php endif?>
-            return false;
+        var location = $('select[name=locations]').val();
+        var service = $('select[name=services]').val();
+
+        <?php if($this->context->id == 'product'):?>
+        window.location.href = 'http://' + window.location.host + '/product/list/' + word;
+        <?php else:?>
+        var url = 'http://' + window.location.host + '/doctor/search/?keyword=' + word;
+        if (typeof location != "undefined") {
+            url += '&location=' + location;
         }
+        if (typeof service != "undefined") {
+            url += '&service=' + service;
+        }
+        window.location.href = url;
+        <?php endif?>
+        return false;
     }
 
     function pressEnter() {

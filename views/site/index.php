@@ -11,8 +11,8 @@
                 <ul>
                     <?php foreach ($images as $image): ?>
                         <li>
-                            <a href="<?=$image->url?>" target="_blank">
-                                <span style="background: url('<?=$image->image?>') center top no-repeat"></span>
+                            <a href="<?= $image->url ?>" target="_blank">
+                                <span style="background: url('<?= $image->image ?>') center top no-repeat"></span>
                             </a>
                         </li>
                     <?php endforeach; ?>
@@ -24,6 +24,16 @@
     </div>
 <?php endif; ?>
 <div class="wrapper">
+    <div class="H-main">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        地区：<?= \yii\bootstrap\Html::dropDownList('locations', isset($location) ? $location : null,
+            \app\models\Doctor::getLocations()); ?>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        服务项目：<?= \yii\bootstrap\Html::dropDownList('services', isset($service) ? $service : null,
+            \app\models\Service::getList()); ?>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <?= \yii\bootstrap\Html::button('筛选', ['onclick' => 'search()']); ?>
+    </div>
     <div class="H-main">
         <?php foreach ($data as $item): ?>
             <a href="/doctor/info/<?= $item->uid ?>">
@@ -45,9 +55,13 @@
                             <div class="H-mian-con-bot clearfix">
                                 <a href="/doctor/info/<?= $item->uid ?>" class="H-mian-state clearfix">
                                 <span
-                                    class="H-mian-state-collection"><b><?= \app\models\Fav::getCount($item->uid); ?></b>人收藏</span>
+                                    class="H-mian-state-collection">
+                                    <b><?= \app\models\Fav::getCount($item->uid); ?></b>人收藏
+                                </span>
                                     <span
-                                        class="H-mian-order-number">已接订单数 <b><?= \app\models\Orders::getCount($item->uid); ?></b></span>
+                                        class="H-mian-order-number">
+                                        已接订单数 <b><?= \app\models\Orders::getCount($item->uid); ?></b>
+                                    </span>
                                 </a>
                                 <a href="/doctor/info/<?= $item->uid ?>" class="H-appointment-btn">咨询预约</a>
                             </div>

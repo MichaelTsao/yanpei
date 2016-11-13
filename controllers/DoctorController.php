@@ -10,6 +10,7 @@ namespace app\controllers;
 
 use app\models\Chat;
 use app\models\Doctor;
+use app\models\DoctorService;
 use app\models\Fav;
 use app\models\Hospital;
 use app\models\LeanCloud;
@@ -39,15 +40,27 @@ class DoctorController extends Controller
         ];
     }
 
-    public function actionSearch($keyword = '')
+    public function actionSearch($keyword = '', $location = '', $service = '')
     {
         $this->view->params['keyword'] = $keyword;
         if (!Yii::$app->user->isGuest && Yii::$app->user->identity->doctor) {
             $list = Chat::getList(Yii::$app->user->id, $keyword);
             return $this->render('chat-list', ['data' => $list]);
-        }else{
-            $data = Doctor::find()->where(['like', 'name', $keyword])->all();
-            return $this->render('/site/index', ['data' => $data, 'ad' => false]);
+        } else {
+            $query = Doctor::find();
+            if ($keyword) {
+                $query->andWhere(['like', 'name', $keyword]);
+            }
+            if ($location) {
+                $query->andWhere(['work_location' => $location]);
+            }
+            if ($service) {
+                $ds = DoctorService::find()->where(['service_id' => $service])->select(['uid'])->asArray()->column();
+                $query->andWhere(['uid' => $ds]);
+            }
+            $data = $query->all();
+            return $this->render('/site/index', ['data' => $data, 'ad' => false,
+                'location' => $location, 'service' => $service]);
         }
     }
 
