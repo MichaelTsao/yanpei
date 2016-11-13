@@ -66,10 +66,11 @@ class Doctor extends \yii\db\ActiveRecord
     {
         return [
             [['uid', 'name', 'company', 'title', 'work_location', 'intro', 'services'], 'required'],
-            [['uid', 'status', 'sort', 'top'], 'integer'],
+            [['status', 'sort', 'top'], 'integer'],
             [['intro'], 'string'],
             [['education', 'school', 'company', 'cover'], 'string', 'max' => 200],
             [['title'], 'string', 'max' => 100],
+            [['uid'], 'string', 'max' => 11],
             [['user', 'service', 'services'], 'safe'],
             [['coverFile'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg', 'maxSize' => 1024 * 1024 * 10],
             [['on_job'], 'integer'],

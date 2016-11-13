@@ -37,6 +37,13 @@ $config = [
         'authManager' => [
             'class' => 'yii\rbac\PhpManager',
         ],
+        'redis' => [
+            'class' => 'app\models\base\Redis',
+            'hostname' => 'localhost',
+            'port' => 6379,
+            'database' => 6,
+            'keyPrefix' => 'yp',
+        ],
     ],
     'params' => $params,
     /*

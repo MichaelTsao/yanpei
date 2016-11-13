@@ -124,7 +124,7 @@ class User extends CachedActiveRecord implements IdentityInterface
             ['relation', 'in', 'range' => array_keys(self::$relationLabels)],
 
             [['icon'], 'string', 'max' => 200],
-            ['uid', 'integer'],
+            [['uid'], 'string', 'max' => 11],
             [['iconFile'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg', 'maxSize' => 1024 * 1024 * 10],
 
             [['name'], 'string', 'max' => 10],
@@ -477,6 +477,6 @@ class User extends CachedActiveRecord implements IdentityInterface
 
     public function makeUserId()
     {
-        return date('ymdH') . rand(100, 999);
+        return substr(date('ymdH'), 1) . rand(1000, 9999);
     }
 }
