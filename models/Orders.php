@@ -260,4 +260,9 @@ class Orders extends \yii\db\ActiveRecord
             }
         }
     }
+
+    public function makeOrderId()
+    {
+        return substr(date('ymdH'), 1) . rand(1000, 9999);
+    }
 }

@@ -13,6 +13,7 @@ use app\models\Chat;
 use app\models\Doctor;
 use app\models\DoctorService;
 use app\models\Fav;
+use app\models\OrderProduct;
 use app\models\Orders;
 use app\models\Sms;
 use app\models\User;
@@ -68,6 +69,7 @@ class HelloController extends Controller
 
     public function actionChangeUid()
     {
+        $this->ids = [];
         $users = User::find()->all();
         foreach ($users as $user) {
             $old_id = $user->uid;
@@ -123,6 +125,27 @@ class HelloController extends Controller
         foreach ($list as $one) {
             $one = $this->changeId($one);
             $one = $this->changeId($one, 'doctor_id');
+            $one->save();
+        }
+    }
+
+    public function actionChangeOid()
+    {
+        $this->ids = [];
+        $orders = Orders::find()->all();
+        foreach ($orders as $order) {
+            $old_id = $order->order_id;
+            if ($old_id < 1000) {
+                $oid = $order->makeOrderId();
+                usleep(100);
+                $order->order_id = $oid;
+                $order->save();
+                $this->ids[$old_id] = $oid;
+            }
+        }
+        $list = OrderProduct::find()->all();
+        foreach ($list as $one) {
+            $one = $this->changeId($one, 'order_id');
             $one->save();
         }
     }
