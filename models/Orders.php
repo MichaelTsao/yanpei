@@ -265,4 +265,13 @@ class Orders extends \yii\db\ActiveRecord
     {
         return substr(date('ymdH'), 1) . rand(1000, 9999);
     }
+
+    public function beforeSave($insert)
+    {
+        if ($this->isNewRecord) {
+            $this->order_id = $this->makeOrderId();
+        }
+
+        return parent::beforeSave($insert);
+    }
 }
