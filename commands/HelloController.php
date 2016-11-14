@@ -75,7 +75,7 @@ class HelloController extends Controller
             $old_id = $user->uid;
             if ($old_id < 1000) {
                 $uid = $user->makeUserId();
-                usleep(100);
+                usleep(500);
                 $user->uid = $uid;
                 $user->save();
                 $this->ids[$old_id] = $uid;
@@ -137,7 +137,7 @@ class HelloController extends Controller
             $old_id = $order->order_id;
             if ($old_id < 1000) {
                 $oid = $order->makeOrderId();
-                usleep(100);
+                usleep(500);
                 $order->order_id = $oid;
                 $order->save();
                 $this->ids[$old_id] = $oid;
