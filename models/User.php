@@ -477,6 +477,6 @@ class User extends CachedActiveRecord implements IdentityInterface
 
     public function makeUserId()
     {
-        return substr(date('ymdH'), 1) . rand(1000, 9999);
+        return substr(date('ymdH', strtotime($this->ctime)), 1) . rand(1000, 9999);
     }
 }
