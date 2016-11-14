@@ -1,6 +1,12 @@
 <?php
-/* @var $this yii\web\View */
+/**
+ * @var $this yii\web\View
+ * @var $scope array
+ * @var $feature array
+ * @var $data app\models\Product
+ */
 ?>
+
 <div class="product-configure">
     <dl>
         <dt style="background: url('<?= $data->icon ?>') no-repeat center center; background-size: cover;"></dt>
@@ -23,6 +29,8 @@
                    <b>电池：</b><b><?= $data->battery ?></b>
                 </span>
             </p>
+            <p>&nbsp;</p>
+            <a href="/m/data/share?type=product&id=<?= $data->product_id?>"><img src="/images/share.png" style="width: 20px; float: right"></a>
         </dd>
     </dl>
 </div>
