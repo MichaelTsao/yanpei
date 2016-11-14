@@ -34,3 +34,6 @@ phpunit.phar
 
 # excel export
 web/res/data.xlsx
+
+# test file
+web/i.php
