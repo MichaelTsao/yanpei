@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/css/lightbox.css"/>
     <script src="/js/public/jquery.js"></script>
     <script src="/js/public/js.cookie.js"></script>
+    <script type="text/javascript" src="/js/public/jquery.touchSlider.js"></script>
     <script src="/js/public/effect.js"></script>
 </head>
 <body>
