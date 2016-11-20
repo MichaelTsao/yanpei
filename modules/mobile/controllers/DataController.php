@@ -74,12 +74,12 @@ class DataController extends Controller
                 $target = ['/'];
                 if ($type == 'product') {
                     if ($product = Product::findOne($id)) {
-                        $msg = '<a href="' . Url::to(['product/info', 'id' => $id]) . '">' . $product->name . '</a>';
+                        $msg = '推荐产品：<a href="' . Url::to(['product/info', 'id' => $id]) . '">' . $product->name . '</a>';
                     }
                     $target = ['product/list'];
                 } elseif ($type == 'article') {
                     if ($article = Article::findOne($id)) {
-                        $msg = '<a href="' . Url::to(['info', 'id' => $id]) . '">' . $article->title . '</a>';
+                        $msg = '推荐文章：<a href="' . Url::to(['info', 'id' => $id]) . '">' . $article->title . '</a>';
                     }
                     $target = ['list'];
                 }

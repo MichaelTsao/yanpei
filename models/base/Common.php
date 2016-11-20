@@ -93,16 +93,19 @@ class Common
             json_encode(array(
                 'conv_id' => $chat_id,
                 'from_peer' => $uid,
-                'to_peer' => [$target],
                 'message' => json_encode(['_lctype' => -1, '_lctext' => $msg]),
 //                'no_sync' => 'true',
-//                'transient' => 'false'
+                'transient' => false
             )),
             array(
                 'X-LC-Id: ' . Yii::$app->params['lean_cloud_id'],
                 'X-LC-Key: ' . Yii::$app->params['lean_cloud_master'] . ",master",
                 'Content-Type: application/json',
             ));
+        Yii::warning('lean cloud msg: ' . json_encode([
+                'id'=>Yii::$app->params['lean_cloud_id'],'master'=>Yii::$app->params['lean_cloud_master'],
+                'chat_id' => $chat_id, 'uid' => $uid, 'target' => $target, 'msg' => $msg, 'result' => $r
+            ]));
         return $r;
     }
 
@@ -143,11 +146,13 @@ class Common
         return isset($array[$key]) ? $array[$key] : '';
     }
 
-    public static function setEcho(&$var, $default = '') {
+    public static function setEcho(&$var, $default = '')
+    {
         return isset($var) ? (empty($var) ? $default : $var) : $default;
     }
 
-    public static function setObjEcho($var, $default = '') {
+    public static function setObjEcho($var, $default = '')
+    {
         return isset($var) ? (empty($var) ? $default : $var) : $default;
     }
 }

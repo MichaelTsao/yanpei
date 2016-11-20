@@ -30,7 +30,9 @@
                 </span>
             </p>
             <p>&nbsp;</p>
-            <a href="/m/data/share?type=product&id=<?= $data->product_id?>"><img src="/images/share.png" style="width: 20px; float: right"></a>
+            <a href="<?= \yii\helpers\Url::to(['data/share', 'type' => 'product', 'id' => $data->product_id]) ?>">
+                <img src="/images/share.png" style="width: 20px; float: right">
+            </a>
         </dd>
     </dl>
 </div>
