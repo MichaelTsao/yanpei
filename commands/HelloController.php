@@ -150,7 +150,7 @@ class HelloController extends Controller
         }
     }
 
-    public function actionRepireService()
+    public function actionRepairService()
     {
         $orders = Orders::find()->all();
         foreach ($orders as $order) {
