@@ -1,3 +1,18 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: caoxiang
+ * Date: 16/6/28
+ * Time: 下午11:53
+ *
+ * @var array $product
+ * @var string $service
+ * @var string $hospital
+ * @var int $price
+ * @var int $uid
+ */
+?>
+
 <div class="place-order-con">
     <div onclick="window.location.href='/m/doctor/choose-service/<?= $uid; ?>'">
         <span <?= $service ? 'class="active"' : ''; ?>><?= $service ? $service : '请选择服务项目'; ?></span>

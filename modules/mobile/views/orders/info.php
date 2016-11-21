@@ -1,3 +1,14 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: caoxiang
+ * Date: 16/6/28
+ * Time: 下午11:53
+ *
+ * @var \app\models\Orders $item
+ */
+?>
+
 <div class="order-status-con">
     <div>
         <dl>
@@ -11,7 +22,7 @@
         </dl>
         <div class="order-list-con-bot clearfix">
             <ul>
-                <li><span>服务内容：</span><span><?= $item->service->name ?></span></li>
+                <li><span>服务内容：</span><span><?= $item->serviceName ?></span></li>
                 <li><span>创建时间：</span><span><?= $item->ctime ?></span></li>
                 <li><span>购买设备：</span></li>
                 <?php foreach ($item->products as $prod): ?>
@@ -40,7 +51,7 @@
             <ul>
                 <li><span>订单状态：</span><span class="blue-color"><?= $item->statusName ?></span></li>
                 <li><span>服务地点：</span><span><?= $item->hospital->name ?></span></li>
-                <li><span>价格：</span><span><?= $price ?></span></li>
+                <li><span>价格：</span><span><?= $item->price ?></span></li>
             </ul>
         </div>
     </div>

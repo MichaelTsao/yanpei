@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => '病人',
             ],
             [
-                'attribute' => 'service.name',
+                'attribute' => 'serviceName',
                 'label' => '服务项目',
             ],
             [

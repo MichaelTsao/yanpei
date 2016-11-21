@@ -23,7 +23,7 @@ use Yii;
  * @property string $accept_time
  * @property string $pay_time
  * @property string $close_time
- * @property Service $service
+ * @property array $service
  * @property integer $price
  */
 class Orders extends \yii\db\ActiveRecord
@@ -55,8 +55,8 @@ class Orders extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['doctor_id', 'uid', 'service_id', 'product_id', 'hospital_id', 'office_id', 'time_section', 'status'], 'integer'],
-            [['appoint_date', 'ctime', 'accept_time', 'pay_time', 'close_time'], 'safe']
+            [['doctor_id', 'uid', 'product_id', 'hospital_id', 'office_id', 'time_section', 'status'], 'integer'],
+            [['appoint_date', 'ctime', 'accept_time', 'pay_time', 'close_time', 'service_id'], 'safe']
         ];
     }
 
@@ -103,7 +103,7 @@ class Orders extends \yii\db\ActiveRecord
 
     public function getService()
     {
-        return $this->hasOne(Service::className(), ['service_id' => 'service_id']);
+        return Service::findAll(['service_id' => json_decode($this->service_id, true)]);
     }
 
     public function getProducts()
@@ -133,7 +133,10 @@ class Orders extends \yii\db\ActiveRecord
 
     public function getPrice()
     {
-        $price = $this->service->price;
+        $price = 0;
+        foreach ($this->service as $s) {
+            $price += $s->price;
+        }
         foreach ($this->products as $prod) {
             $price += $prod->product->price;
         }
@@ -224,7 +227,15 @@ class Orders extends \yii\db\ActiveRecord
 
     public function getServiceName()
     {
-        return $this->service ? $this->service->name : '';
+        if ($this->service) {
+            $name = [];
+            foreach ($this->service as $s) {
+                $name[] = $s->name;
+            }
+            return implode('，', $name);
+        }else{
+            return '';
+        }
     }
 
     public function getProductName()

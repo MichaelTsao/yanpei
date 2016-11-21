@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => '病人',
             ],
             [
-                'value' => 'service.name',
+                'value' => 'serviceName',
                 'label' => '服务',
             ],
             [

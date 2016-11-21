@@ -149,4 +149,15 @@ class HelloController extends Controller
             $one->save();
         }
     }
+
+    public function actionRepireService()
+    {
+        $orders = Orders::find()->all();
+        foreach ($orders as $order) {
+            $s = [];
+            $s[] = intval($order->service_id);
+            $order->service_id = json_encode($s);
+            $order->save();
+        }
+    }
 }

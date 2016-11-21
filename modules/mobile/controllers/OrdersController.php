@@ -202,9 +202,8 @@ class OrdersController extends Controller
 
         $price = 0;
         if ($service) {
-            $s = Service::findOne($service);
-            $service_name = $s->name;
-            $price += $s->price;
+            $service_name = Service::getName(json_decode($service, true));
+            $price = Service::getPrice($service);
         } else {
             $service_name = '';
         }
@@ -260,8 +259,7 @@ class OrdersController extends Controller
         if (!$data = Orders::findOne($id)) {
             return $this->redirect('/m');
         }
-        $price = $data->price;
-        return $this->render('info', ['item' => $data, 'price' => $price]);
+        return $this->render('info', ['item' => $data]);
     }
 
     public function actionList()

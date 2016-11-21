@@ -60,9 +60,13 @@ class DoctorController extends Controller
         $key = "order:$doctor_id:$id";
         $order = Yii::$app->redis->getHash($key);
 
-        if (isset($order['service']) && ($s = Service::findOne(['service_id' => $order['service']]))) {
-            $service_name = $s->name;
-            $price += $s->price;
+        if (isset($order['service']) && ($s = Service::findAll(['service_id' => json_decode($order['service'], true)]))) {
+            $service = [];
+            foreach ($s as $item) {
+                $service[] = $item->name;
+                $price += $item->price;
+            }
+            $service_name = implode('，', $service);
         } else {
             $service_name = '';
         }
@@ -241,7 +245,7 @@ class DoctorController extends Controller
 
     public function actionChooseService($id)
     {
-        $s = Service::getList();
+        $s = Service::getList(false);
         return $this->render('choose-service', ['service' => $s, 'user_id' => $id]);
     }
 

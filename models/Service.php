@@ -53,11 +53,38 @@ class Service extends \yii\db\ActiveRecord
         ];
     }
 
-    public static function getList()
+    public static function getList($hasAll = true)
     {
-        return ['0' => '全部'] + self::find()
+        $r = self::find()
             ->select(['name'])
             ->where(['status' => self::STATUS_ACTIVE])
             ->indexBy('service_id')->asArray()->column();
+
+        if ($hasAll) {
+            return ['0' => '全部'] + $r;
+        }else{
+            return $r;
+        }
+    }
+
+    public static function getName($service_id)
+    {
+        $name = [];
+        $services = self::findAll(['service_id'=>$service_id]);
+        foreach ($services as $service) {
+            $name[] = $service->name;
+        }
+        return implode('，', $name);
+    }
+
+    public static function getPrice($service_id)
+    {
+        $price = 0;
+        $services = self::findAll(['service_id'=>$service_id]);
+        foreach ($services as $service) {
+            $price += $service->price;
+        }
+        return $price;
+
     }
 }

@@ -16,12 +16,14 @@
                             </dl>
                             <div class="order-list-con-bot clearfix">
                                 <ul>
-                                    <li><span>服务内容：</span><span><?= $item->service->name ?></span></li>
+                                    <li><span>服务内容：</span><span><?= $item->serviceName ?></span></li>
                                     <li><span>创建时间：</span><span><?= $item->ctime ?></span></li>
                                     <li><span>订单状态：</span><span class="blue-color"><?= $item->statusName ?></span></li>
                                 </ul>
                                 <ul>
-                                    <li><span>设备：</span><span><?= count($item->products) ? $item->products[0]->product->name : '' ?></span></li>
+                                    <li>
+                                        <span>设备：</span><span><?= count($item->products) ? $item->products[0]->product->name : '' ?></span>
+                                    </li>
                                     <li><span>服务地点：</span><span><?= $item->hospital->name ?></span></li>
                                 </ul>
                             </div>
