@@ -126,7 +126,9 @@ use yii\widgets\ActiveForm;
                             <b>幼时耳聋情况</b>
                             <select name="Cases[deaf_status]">
                             <?php foreach (\app\models\Cases::$deaf_statuses as $id => $value): ?>
-                                &nbsp;<option value="<?= $id?>" <?php if ($model->deaf_status == $id) echo "selected" ?>><?= $value?></option>
+                                &nbsp;
+                                <option
+                                    value="<?= $id ?>" <?php if ($model->deaf_status == $id) echo "selected" ?>><?= $value ?></option>
                             <?php endforeach; ?>
                                 </select>
                         </span>
@@ -373,7 +375,7 @@ use yii\widgets\ActiveForm;
             <!--            <strong class="">错误</strong>-->
         </div>
 
-        <?php if ($type == 2):?>
+        <?php if ($type == 2): ?>
             <div class="product-function-point">
                 <div class="clearfix">
                     <h1 class="clearfix">
@@ -402,7 +404,8 @@ use yii\widgets\ActiveForm;
                             </span>
                             </div>
                         </div>
-                        <input type="hidden" name="Cases[mother_toxic]" id="mother_toxic" value="<?= $model->mother_toxic ?>">
+                        <input type="hidden" name="Cases[mother_toxic]" id="mother_toxic"
+                               value="<?= $model->mother_toxic ?>">
 
                         <div class="apply-text clearfix">
                             <span class="clearfix">
@@ -581,7 +584,7 @@ use yii\widgets\ActiveForm;
                     </div>
                 </div>
             </div>
-        <?php endif;?>
+        <?php endif; ?>
 
         <div class="product-function-point">
             <div class="clearfix">
@@ -997,45 +1000,51 @@ use yii\widgets\ActiveForm;
                 <div class="product-point-con clearfix">
                     <table style="width: 100%">
                         <tr>
-                            <td style="margin-bottom: 10px; text-align: center;"><label
-                                    style="margin-bottom: 20px">左耳: </label></td>
+                            <td style="margin-bottom: 10px; text-align: center;">
+                                <label style="margin-bottom: 20px">左耳: </label>
+                            </td>
                         </tr>
                         <tr>
                             <td style="margin-bottom: 10px; text-align: center;">&nbsp;</td>
                         </tr>
                         <tr>
                             <td style="margin-bottom: 10px; text-align: center;">
-                                <img src="" id="ceting_left" style="width: 100%">
+                                <img src="" id="ceting_left" style="width: 100%" onload="myScroll.refresh();">
                                 <input type="hidden" name="Cases[ceting_img_left]" id="img_left">
                             </td>
                         </tr>
                         <tr>
-                            <td style="margin-bottom: 10px; text-align: center;"><input type="button"
-                                                                                        style="-webkit-appearance: button;"
-                                                                                        value="上传"
-                                                                                        onclick="showPic('left')"></td>
-                        </tr>
-                        <tr>
-                            <td style="margin-bottom: 10px; text-align: center;">&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td style="margin-bottom: 10px; text-align: center;"><label
-                                    style="margin-bottom: 20px">右耳: </label></td>
+                            <td style="margin-bottom: 10px; text-align: center;">
+                                <input type="button"
+                                       style="-webkit-appearance: button;"
+                                       value="上传"
+                                       onclick="showPic('left')">
+                            </td>
                         </tr>
                         <tr>
                             <td style="margin-bottom: 10px; text-align: center;">&nbsp;</td>
                         </tr>
                         <tr>
                             <td style="margin-bottom: 10px; text-align: center;">
-                                <img src="" id="ceting_right" style="width: 100%">
+                                <label style="margin-bottom: 20px">右耳: </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="margin-bottom: 10px; text-align: center;">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="margin-bottom: 10px; text-align: center;">
+                                <img src="" id="ceting_right" style="width: 100%" onload="myScroll.refresh();">
                                 <input type="hidden" name="Cases[ceting_img_right]" id="img_right">
                             </td>
                         </tr>
                         <tr>
-                            <td style="margin-bottom: 10px; text-align: center;"><input type="button"
-                                                                                        style="-webkit-appearance: button;"
-                                                                                        value="上传"
-                                                                                        onclick="showPic('right')"></td>
+                            <td style="margin-bottom: 10px; text-align: center;">
+                                <input type="button"
+                                       style="-webkit-appearance: button;"
+                                       value="上传"
+                                       onclick="showPic('right')">
+                            </td>
                         </tr>
                     </table>
                 </div>
