@@ -9,7 +9,7 @@
 <?php foreach ($data as $item): ?>
     <div class="case-list-con" onclick="window.location.href='/m/case/info/<?= $item->case_id; ?>'">
         <dl>
-            <dt <?= "style=\"background: url('{$item->user->icon}')no-repeat center center; background-size: cover\"" ?>></dt>
+            <dt <?= "style=\"background: url('" . isset($item->user) ? $item->user->icon : '' . "')no-repeat center center; background-size: cover\"" ?>></dt>
             <dd>
                 <h1><?= $item->user->name ?></h1>
                 <h2>
@@ -21,10 +21,10 @@
                     <span><?= ($item->doctor_id) ? $item->doctor->name : '本人' ?></span>
                 </h2>
             </dd>
-            <?php if(!Yii::$app->user->identity->doctor || $item->doctor_id == Yii::$app->user->id): ?>
-            <span class="place-order-cross" onclick="removeCase(this.id); event.stopPropagation();"
-                  id="<?= $item->case_id; ?>"></span>
-            <?php endif;?>
+            <?php if (!Yii::$app->user->identity->doctor || $item->doctor_id == Yii::$app->user->id): ?>
+                <span class="place-order-cross" onclick="removeCase(this.id); event.stopPropagation();"
+                      id="<?= $item->case_id; ?>"></span>
+            <?php endif; ?>
         </dl>
     </div>
 <?php endforeach; ?>
