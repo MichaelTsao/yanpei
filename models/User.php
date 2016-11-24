@@ -454,7 +454,7 @@ class User extends CachedActiveRecord implements IdentityInterface
     public function getDoctor()
     {
         if ($this->_doctor === false) {
-            $this->_doctor = Doctor::findOne(['uid' => $this->uid, 'status' => Doctor::STATUS_NORMAL]);
+            $this->_doctor = Doctor::findOne(['uid' => $this->uid]);
         }
         return $this->_doctor;
     }
