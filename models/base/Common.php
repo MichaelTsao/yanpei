@@ -12,9 +12,12 @@ use Yii;
 
 class Common
 {
-    public static function request($url, $param = array(), $header = array(), $ssl = false, $files = [])
+    public static function request($url, $param = array(), $header = array(), $ssl = false, $files = [], $custom=false)
     {
         $ch = curl_init();
+        if ($custom) {
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $custom);
+        }
         $options = array(
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_CONNECTTIMEOUT => 8,
@@ -122,7 +125,7 @@ class Common
                 'X-LC-Id: ' . Yii::$app->params['lean_cloud_id'],
                 'X-LC-Key: ' . Yii::$app->params['lean_cloud_master'] . ",master",
                 'Content-Type: application/json',
-            ));
+            ), false, [], 'PUT');
         return $r;
     }
 
