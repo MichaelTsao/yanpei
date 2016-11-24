@@ -221,11 +221,11 @@ class DoctorController extends Controller
             if (Yii::$app->user->getIdentity()->doctor) {
                 $uid = $chat->uid;
                 $url = Yii::$app->params['host'] . '/doctor/chat/' . $chat->doctor_id;
-                $name = $chat->user->name;
+                $name = $chat->doctor->name;
             } else {
                 $uid = $chat->doctor_id;
                 $url = Yii::$app->params['host'] . '/doctor/chat-user/' . $chat->uid;
-                $name = $chat->doctor->name;
+                $name = $chat->user->name;
             }
             if ($device = DeviceUser::findOne(['uid' => $uid, 'type' => DeviceUser::TYPE_H5])) {
                 $weixin = new WeiXinSDK([
