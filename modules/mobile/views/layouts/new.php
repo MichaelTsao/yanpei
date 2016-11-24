@@ -11,7 +11,7 @@
     <meta content="telephone=no" name="format-detection"/>
     <link rel="stylesheet" href="/res/new-css/style.css"/>
     <link rel="stylesheet" href="/js/new/laydate/need/laydate.css"/>
-    <script src="/js/public/effect.js"></script>
+    <script src="/js/public/effect-m.js"></script>
 </head>
 <body>
 

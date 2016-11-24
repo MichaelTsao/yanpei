@@ -127,21 +127,23 @@
             loadStart: function () {
                 $(".P-cancel").triggerHandler("click");
                 $("#tailor").css("display", "block");
-                //console.log("照片读取中");
+                console.log("照片读取中");
                 $('.lazy_tip span').text('');
                 $('.lazy_cover,.lazy_tip').show();
             },
             loadComplete: function () {
-                //console.log("照片读取完成");
+                console.log("照片读取完成");
                 $('.lazy_cover,.lazy_tip').hide();
             },
             clipFinish: function (dataURL) {
+                console.log(dataURL);
                 if (dataURL == "") {
                     alert('null');
                 }
                 $('#loading').show();
                 var img_data = dataURL.split(",");
                 $.post("/m/user/change-icon", {icon: img_data[1]}, function (data) {
+                    console.log(data);
                     if ('ok' == data) {
                         window.location.reload();
                     } else {

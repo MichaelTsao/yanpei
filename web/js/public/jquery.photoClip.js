@@ -111,6 +111,7 @@ function photoClip(container, option) {
 			};
 			fileReader.readAsDataURL(this.files[0]); // 读取文件内容
 			//保存文件名
+
 			$('#hit').attr('fileName',this.files[0].name);
 			loadStart.call(fileReader, this.files[0]);
 		}
@@ -119,8 +120,6 @@ function photoClip(container, option) {
 	$file.click(function() {
 		this.value = "";
 	});
-
-
 
 	var $container, // 容器，包含裁剪视图层和遮罩层
 		$clipView, // 裁剪视图层，包含移动层
@@ -180,7 +179,7 @@ function photoClip(container, option) {
 			freeScroll: true,
 			mouseWheel: true,
 			wheelAction: "zoom"
-		}
+		};
 		myScroll = new IScroll($clipView[0], options);
 	}
 	function resetScroll() {
@@ -403,17 +402,19 @@ function photoClip(container, option) {
 		canvas.height = clipHeight;
 	}
 	function clipImg() {
+		console.log(3);
 		if (!imgLoaded) {
 			alert("亲，当前没有图片可以裁剪!");
 			$('.lazy_cover,.lazy_tip').hide();
 			return;
 		}
+		console.log(2);
 		var local = loaclToLoacl($moveLayer, $clipView);
 		var scale = myScroll.scale;
 		var ctx = canvas.getContext("2d");
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		ctx.save();
-
+		console.log(1);
 		if (strictSize) {
 			ctx.scale(scale, scale);
 		} else {
