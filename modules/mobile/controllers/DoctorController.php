@@ -112,6 +112,11 @@ class DoctorController extends Controller
         return $this->render('chat-list', ['data' => $list, 'keyword' => $keyword]);
     }
 
+    /**
+     * 用户找医生聊天
+     * @param $id
+     * @return string|\yii\web\Response
+     */
     public function actionChat($id)
     {
         if ($id == Yii::$app->user->id) {
@@ -143,6 +148,11 @@ class DoctorController extends Controller
         return $this->render('chat', $param);
     }
 
+    /**
+     * 医生找用户聊
+     * @param $id
+     * @return string|\yii\web\Response
+     */
     public function actionChatUser($id)
     {
         if ($id == Yii::$app->user->id) {
