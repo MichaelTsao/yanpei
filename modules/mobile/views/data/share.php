@@ -18,7 +18,7 @@
                 <dl>
                     <dt <?= "style=\"background: url('{$user->icon}')no-repeat center center; background-size: cover\"" ?>></dt>
                     <dd>
-                        <h1><?= $user->doctor->name ?></h1>
+                        <h1><?= Yii::$app->user->identity->doctor ? $user->name : $user->doctor->name ?></h1>
                         <h2>
                         </h2>
                     </dd>
