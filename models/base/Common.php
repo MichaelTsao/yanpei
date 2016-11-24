@@ -113,8 +113,10 @@ class Common
     {
         $r = self::request('https://api.leancloud.cn/1.1/classes/_Conversation/' . $chat_id,
             json_encode(array(
-                '__op' => 'AddUnique',
-                'objects' => [$uid],
+                'm' => [
+                    '__op' => 'AddUnique',
+                    'objects' => [$uid],
+                ],
             )),
             array(
                 'X-LC-Id: ' . Yii::$app->params['lean_cloud_id'],

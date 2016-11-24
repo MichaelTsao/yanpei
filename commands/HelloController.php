@@ -162,7 +162,16 @@ class HelloController extends Controller
         }
     }
 
-    public function actionAddCahtUser()
+    public function actionAddChatUser()
+    {
+        $c = Chat::find()->all();
+        foreach ($c as $item) {
+            Common::addChatUser($item->chat_id, $item->uid);
+            Common::addChatUser($item->chat_id, $item->doctor_id);
+        }
+    }
+
+    public function actionAddChatTest()
     {
         Common::addChatUser('5731d0c579bc44005c1fa807', '60506113874');
     }
