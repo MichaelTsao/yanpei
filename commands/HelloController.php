@@ -7,6 +7,7 @@
 
 namespace app\commands;
 
+use app\models\base\Common;
 use app\models\base\DeviceUser;
 use app\models\Cases;
 use app\models\Chat;
@@ -159,5 +160,10 @@ class HelloController extends Controller
             $order->service_id = json_encode($s);
             $order->save();
         }
+    }
+
+    public function actionAddCahtUser()
+    {
+        Common::addChatUser('5731d0c579bc44005c1fa807', '60506113874');
     }
 }

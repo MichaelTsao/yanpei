@@ -103,9 +103,24 @@ class Common
                 'Content-Type: application/json',
             ));
         Yii::warning('lean cloud msg: ' . json_encode([
-                'id'=>Yii::$app->params['lean_cloud_id'],'master'=>Yii::$app->params['lean_cloud_master'],
+                'id' => Yii::$app->params['lean_cloud_id'], 'master' => Yii::$app->params['lean_cloud_master'],
                 'chat_id' => $chat_id, 'uid' => $uid, 'target' => $target, 'msg' => $msg, 'result' => $r
             ]));
+        return $r;
+    }
+
+    public static function addChatUser($chat_id, $uid)
+    {
+        $r = self::request('https://api.leancloud.cn/1.1/classes/_Conversation/' . $chat_id,
+            json_encode(array(
+                '__op' => 'AddUnique',
+                'objects' => [$uid],
+            )),
+            array(
+                'X-LC-Id: ' . Yii::$app->params['lean_cloud_id'],
+                'X-LC-Key: ' . Yii::$app->params['lean_cloud_master'] . ",master",
+                'Content-Type: application/json',
+            ));
         return $r;
     }
 
