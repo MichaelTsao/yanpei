@@ -135,6 +135,9 @@ class DoctorController extends Controller
         }
 
         $doctor = Doctor::findOne($id);
+        if (!$doctor) {
+            return $this->redirect('/m');
+        }
         Yii::warning('doctorId: ' . $id);
         $order = Orders::find()->where(['uid' => Yii::$app->user->id, 'doctor_id' => $doctor->uid])
             ->andWhere(['not', ['status' => [Orders::STATUS_FINISH, Orders::STATUS_CANCEL]]])->one();
