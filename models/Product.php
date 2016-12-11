@@ -32,6 +32,13 @@ class Product extends \yii\db\ActiveRecord
         4 => '15000~30000',
         5 => '>30000',
     ];
+    public static $priceSectionArray = [
+        1 => [0, 1500],
+        2 => [1501, 6000],
+        3 => [6001, 15000],
+        4 => [15001, 30000],
+        5 => [30001, 1000000],
+    ];
 
     /**
      * @inheritdoc
@@ -151,11 +158,20 @@ class Product extends \yii\db\ActiveRecord
         return self::find()->select(['name'])->indexBy('product_id')->asArray()->column();
     }
 
-    public static function getData($keyword = '')
+    public static function getData($keyword = '', $brand = '', $battery = '', $price = '')
     {
         $query = self::find()->orderBy(['sort' => SORT_DESC]);
         if ($keyword) {
             $query->where(['like', 'name', $keyword]);
+        }
+        if ($brand) {
+            $query->andWhere(['brand' => $brand]);
+        }
+        if ($battery) {
+            $query->andWhere(['battery' => $battery]);
+        }
+        if ($price && isset(self::$priceSectionArray[$price])) {
+            $query->andWhere(['between', 'price', self::$priceSectionArray[$price][0], self::$priceSectionArray[$price][1]]);
         }
         return $query->all();
     }

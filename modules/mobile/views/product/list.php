@@ -21,13 +21,13 @@
     <p class="clearfix">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         品牌：<?= \yii\bootstrap\Html::dropDownList('brand', isset($brand) ? $brand : null,
-            array_merge([0 => '全部'], \app\models\Brand::getList())); ?>
+            [0 => '全部'] + \app\models\Brand::getList(), ['id' => 'brand']); ?>
         &nbsp;
         电池：<?= \yii\bootstrap\Html::dropDownList('battery', isset($battery) ? $battery : null,
-            array_merge([0 => '全部'], \app\models\Product::getBattery())); ?>
+            [0 => '全部'] + \app\models\Product::getBattery(), ['id' => 'battery']); ?>
         &nbsp;
         价格：<?= \yii\bootstrap\Html::dropDownList('price', isset($price) ? $price : null,
-            array_merge([0 => '全部'], \app\models\Product::$priceSection)); ?>
+            [0 => '全部'] + \app\models\Product::$priceSection, ['id' => 'price']); ?>
         &nbsp;
         <?= \yii\bootstrap\Html::button('筛选', ['onclick' => 'search()']); ?>
     </p>
@@ -50,7 +50,6 @@
             </div>
         </a>
     <?php endforeach; ?>
-    <?= ''//$this->render('/template/page', ['data' => $data]);     ?>
 <?php endif; ?>
 
 <script>
@@ -63,16 +62,20 @@
         var param = [];
 
         if (word != '') {
-            param.push('keyword = ' + word);
+            param.push('keyword=' + word);
         }
         if (brand != 0) {
-            param.push('brand = ' + brand);
+            param.push('brand=' + brand);
         }
-        if (battery != '') {
-            param.push('keyword = ' + word);
+        if (battery != 0) {
+            param.push('battery=' + battery);
         }
-        if (word != '') {
-            param.push('keyword = ' + word);
+        if (price != 0) {
+            param.push('price=' + price);
+        }
+
+        if (param.length > 0) {
+            url += '?' + param.join('&');
         }
 
         window.location.href = url;

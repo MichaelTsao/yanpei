@@ -37,9 +37,15 @@ class ProductController extends \yii\web\Controller
         ]);
     }
 
-    public function actionList($keyword = '')
+    public function actionList($keyword = '', $brand = 0, $battery = 0, $price = 0)
     {
         $this->view->params['isProduct'] = true;
-        return $this->render('list', ['data' => Product::getData($keyword), 'keyword' => $keyword]);
+        return $this->render('list', [
+            'data' => Product::getData($keyword, $brand, $battery, $price),
+            'keyword' => $keyword,
+            'brand' => $brand,
+            'battery' => $battery,
+            'price' => $price,
+        ]);
     }
 }
