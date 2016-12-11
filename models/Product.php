@@ -25,6 +25,13 @@ class Product extends \yii\db\ActiveRecord
     public $scopes = [];
     public $feature = '';
     public $scope = '';
+    public static $priceSection = [
+        1 => '0~1500',
+        2 => '1500~6000',
+        3 => '6000~15000',
+        4 => '15000~30000',
+        5 => '>30000',
+    ];
 
     /**
      * @inheritdoc
@@ -151,5 +158,16 @@ class Product extends \yii\db\ActiveRecord
             $query->where(['like', 'name', $keyword]);
         }
         return $query->all();
+    }
+
+    public static function getBattery()
+    {
+        return self::find()
+            ->select('battery')
+            ->distinct(true)
+            ->where(['not', ['battery' => '']])
+            ->indexBy('battery')
+            ->asArray()
+            ->column();
     }
 }

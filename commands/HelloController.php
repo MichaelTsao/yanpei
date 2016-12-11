@@ -16,6 +16,7 @@ use app\models\DoctorService;
 use app\models\Fav;
 use app\models\OrderProduct;
 use app\models\Orders;
+use app\models\Product;
 use app\models\Sms;
 use app\models\User;
 use app\models\UserToken;
@@ -40,14 +41,7 @@ class HelloController extends Controller
      */
     public function actionIndex($message = 'hello world')
     {
-        Yii::$app->mailer->compose()
-            ->setFrom('customer-service@eting33.com')
-            ->setTo('caoxiang@yeah.net')
-            ->setSubject('test')
-            ->setTextBody('Plain text content')
-            ->setHtmlBody('<b>HTML content</b>')
-            ->send();
-        echo $message . "\n";
+        var_dump(Product::getBattery());
     }
 
     public function actionTest()
