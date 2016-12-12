@@ -30,6 +30,16 @@
                 </span>
             </p>
             <p>&nbsp;</p>
+            <?php if($data->buy_url): ?>
+            <a href="<?= $data->buy_url ?>" target="_blank" style="width:90px;height:36px;color: #ffffff;
+                background: #2eaef5;
+                border-radius: 4px;
+                text-align: center;
+                line-height: 36px;
+                font-size: 1.4rem;">
+                &nbsp;&nbsp;购买&nbsp;&nbsp;
+            </a>
+            <?php endif ?>
             <a href="<?= \yii\helpers\Url::to(['data/share', 'type' => 'product', 'id' => $data->product_id]) ?>">
                 <img src="/images/share.png" style="width: 20px; float: right">
             </a>

@@ -17,6 +17,7 @@ use Yii;
  * @property string $battery
  * @property string $info
  * @property integer $sort
+ * @property string $buy_url
  */
 class Product extends \yii\db\ActiveRecord
 {
@@ -56,6 +57,7 @@ class Product extends \yii\db\ActiveRecord
         return [
             [['price', 'brand', 'type', 'sort'], 'integer'],
             [['name', 'icon', 'battery'], 'string', 'max' => 200],
+            [['buy_url'], 'string', 'max' => 1000],
             [['iconFile'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg', 'maxSize' => 1024 * 1024 * 10],
             [['info'], 'string'],
             [['features', 'scopes', 'feature', 'scope'], 'safe'],
@@ -82,6 +84,7 @@ class Product extends \yii\db\ActiveRecord
             'feature' => '功能点',
             'scope' => '验配范围',
             'sort' => '排序',
+            'buy_url' => '购买链接',
         ];
     }
 

@@ -40,6 +40,7 @@ use yii\jui\Sortable;
 
 
     <?= $form->field($model, 'info')->textArea(['rows' => 4]) ?>
+    <?= $form->field($model, 'buy_url')->textInput() ?>
 
     <?php
     $config = [

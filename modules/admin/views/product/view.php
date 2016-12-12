@@ -61,6 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'features',
                 'value'=> $feature,
             ],
+            'buy_url',
         ],
     ]) ?>
 
