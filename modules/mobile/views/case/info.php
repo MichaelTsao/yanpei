@@ -4,6 +4,8 @@
  * User: caoxiang
  * Date: 16/6/28
  * Time: 下午2:55
+ *
+ * @var \app\models\Cases $info
  */
 
 use app\models\base\Common;
@@ -13,16 +15,16 @@ use app\models\base\Common;
 <div class="case-details-top">
     <dl>
         <dt <?= "style=\"background: url('{$info->user->icon}')no-repeat center center; background-size: cover\"" ?>
-            id="icon_"></dt>
+                id="icon_"></dt>
         <dd>
             <h1><?= $info->user->name ?></h1>
             <p>
                 <!--                <span>-->
-                <!--                    <b>年龄：</b><b>--><?= ''//$info->user->age     ?><!--岁</b>-->
+                <!--                    <b>年龄：</b><b>--><?= ''//$info->user->age         ?><!--岁</b>-->
                 <!--                </span>-->
                 <!--                <span>-->
                 <!--                    <b>性别：</b><b>-->
-                <?= ''//\app\models\User::$genderLabel[$info->user->gender]     ?><!--</b>-->
+                <?= ''//\app\models\User::$genderLabel[$info->user->gender]         ?><!--</b>-->
                 <!--                </span>-->
                 <span>
                     <b>创建时间：</b><b><?= date('Y年m月d日', strtotime($info->ctime)); ?></b>
@@ -136,74 +138,76 @@ use app\models\base\Common;
     </div>
 </div>
 
-<?php if ($info->type == \app\models\Cases::TYPE_CHILD) :?>
-<div class="product-function-point">
-    <div class="clearfix">
-        <h1 class="clearfix">
-            <span><img src="/res/img/h1-left-border.png" alt=""/></span>
-            <span>出生史</span>
-        </h1>
-        <div class="product-point-con clearfix">
-            <ul class="product-point-line">
-                <li><?= \yii\helpers\Html::activeLabel($info, 'mother_ill_history') ?>
-                    : <?= $info->mother_ill_history; ?></li>
-                <li><?= \yii\helpers\Html::activeLabel($info, 'mother_toxic') ?>
-                    : <?= implode('、', $info->motherToxicName); ?></li>
-                <li>
-                    <?= \yii\helpers\Html::activeLabel($info, 'baotaiyao') ?>
-                    : <?= $info->baotaiyao; ?>
-                </li>
-                <?= \yii\helpers\Html::activeLabel($info, 'gaoxueya') ?>
-                : <?= Common::showArrayValue(\app\models\Cases::$has, $info->gaoxueya); ?><li>
-                </li>
-                <li>
-                    <?= \yii\helpers\Html::activeLabel($info, 'renshenfanying') ?>
-                    : <?= Common::showArrayValue(\app\models\Cases::$renshen, $info->renshenfanying); ?></li>
-                <li>
-                    <?= \yii\helpers\Html::activeLabel($info, 'renshen_hurt') ?>
-                    : <?= $info->renshen_hurt; ?>
-                </li>
-                <li>
-                    <?= \yii\helpers\Html::activeLabel($info, 'renshen_ill') ?>
-                    : <?= $info->renshen_ill; ?>
-                </li>
-                <?= \yii\helpers\Html::activeLabel($info, 'shunchan') ?>
-                : <?= Common::showArrayValue(\app\models\Cases::$has, $info->shunchan); ?><li>
-                </li>
-                <li>
-                    <?= \yii\helpers\Html::activeLabel($info, 'zaochan') ?>
-                    : <?= Common::showArrayValue(\app\models\Cases::$renshen, $info->zaochan); ?></li>
-                <li>
-                    <?= \yii\helpers\Html::activeLabel($info, 'birth_month') ?>
-                    : <?= $info->birth_month; ?>
-                </li>
-                <li>
-                    <?= \yii\helpers\Html::activeLabel($info, 'nanchan') ?>
-                    : <?= Common::showArrayValue(\app\models\Cases::$has, $info->nanchan); ?></li>
-                <li>
-                    <?= \yii\helpers\Html::activeLabel($info, 'zhuchan') ?>
-                    : <?= Common::showArrayValue(\app\models\Cases::$has, $info->zhuchan); ?></li>
-                <li>
-                    <?= \yii\helpers\Html::activeLabel($info, 'yinchan') ?>
-                    : <?= Common::showArrayValue(\app\models\Cases::$has, $info->yinchan); ?></li>
-                <li>
-                    <?= \yii\helpers\Html::activeLabel($info, 'paofuchan') ?>
-                    : <?= Common::showArrayValue(\app\models\Cases::$has, $info->paofuchan); ?></li>
-                <li>
-                    <?= \yii\helpers\Html::activeLabel($info, 'queyang') ?>
-                    : <?= Common::showArrayValue(\app\models\Cases::$has, $info->queyang); ?></li>
-                <li>
-                    <?= \yii\helpers\Html::activeLabel($info, 'tizhong') ?>
-                    : <?= $info->tizhong; ?>
-                </li>
-                <li>
-                    <?= \yii\helpers\Html::activeLabel($info, 'raojing') ?>
-                    : <?= Common::showArrayValue(\app\models\Cases::$has, $info->raojing); ?></li>
-            </ul>
+<?php if ($info->type == \app\models\Cases::TYPE_CHILD) : ?>
+    <div class="product-function-point">
+        <div class="clearfix">
+            <h1 class="clearfix">
+                <span><img src="/res/img/h1-left-border.png" alt=""/></span>
+                <span>出生史</span>
+            </h1>
+            <div class="product-point-con clearfix">
+                <ul class="product-point-line">
+                    <li><?= \yii\helpers\Html::activeLabel($info, 'mother_ill_history') ?>
+                        : <?= $info->mother_ill_history; ?></li>
+                    <li><?= \yii\helpers\Html::activeLabel($info, 'mother_toxic') ?>
+                        : <?= implode('、', $info->motherToxicName); ?></li>
+                    <li>
+                        <?= \yii\helpers\Html::activeLabel($info, 'baotaiyao') ?>
+                        : <?= $info->baotaiyao; ?>
+                    </li>
+                    <?= \yii\helpers\Html::activeLabel($info, 'gaoxueya') ?>
+                    : <?= Common::showArrayValue(\app\models\Cases::$has, $info->gaoxueya); ?>
+                    <li>
+                    </li>
+                    <li>
+                        <?= \yii\helpers\Html::activeLabel($info, 'renshenfanying') ?>
+                        : <?= Common::showArrayValue(\app\models\Cases::$renshen, $info->renshenfanying); ?></li>
+                    <li>
+                        <?= \yii\helpers\Html::activeLabel($info, 'renshen_hurt') ?>
+                        : <?= $info->renshen_hurt; ?>
+                    </li>
+                    <li>
+                        <?= \yii\helpers\Html::activeLabel($info, 'renshen_ill') ?>
+                        : <?= $info->renshen_ill; ?>
+                    </li>
+                    <?= \yii\helpers\Html::activeLabel($info, 'shunchan') ?>
+                    : <?= Common::showArrayValue(\app\models\Cases::$has, $info->shunchan); ?>
+                    <li>
+                    </li>
+                    <li>
+                        <?= \yii\helpers\Html::activeLabel($info, 'zaochan') ?>
+                        : <?= Common::showArrayValue(\app\models\Cases::$renshen, $info->zaochan); ?></li>
+                    <li>
+                        <?= \yii\helpers\Html::activeLabel($info, 'birth_month') ?>
+                        : <?= $info->birth_month; ?>
+                    </li>
+                    <li>
+                        <?= \yii\helpers\Html::activeLabel($info, 'nanchan') ?>
+                        : <?= Common::showArrayValue(\app\models\Cases::$has, $info->nanchan); ?></li>
+                    <li>
+                        <?= \yii\helpers\Html::activeLabel($info, 'zhuchan') ?>
+                        : <?= Common::showArrayValue(\app\models\Cases::$has, $info->zhuchan); ?></li>
+                    <li>
+                        <?= \yii\helpers\Html::activeLabel($info, 'yinchan') ?>
+                        : <?= Common::showArrayValue(\app\models\Cases::$has, $info->yinchan); ?></li>
+                    <li>
+                        <?= \yii\helpers\Html::activeLabel($info, 'paofuchan') ?>
+                        : <?= Common::showArrayValue(\app\models\Cases::$has, $info->paofuchan); ?></li>
+                    <li>
+                        <?= \yii\helpers\Html::activeLabel($info, 'queyang') ?>
+                        : <?= Common::showArrayValue(\app\models\Cases::$has, $info->queyang); ?></li>
+                    <li>
+                        <?= \yii\helpers\Html::activeLabel($info, 'tizhong') ?>
+                        : <?= $info->tizhong; ?>
+                    </li>
+                    <li>
+                        <?= \yii\helpers\Html::activeLabel($info, 'raojing') ?>
+                        : <?= Common::showArrayValue(\app\models\Cases::$has, $info->raojing); ?></li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
-<?php endif;?>
+<?php endif; ?>
 
 <div class="product-function-point">
     <div class="clearfix">
@@ -231,262 +235,272 @@ use app\models\base\Common;
     </div>
 </div>
 
-<div class="product-function-point">
-    <div class="clearfix">
-        <h1 class="clearfix">
-            <span><img src="/res/img/h1-left-border.png" alt=""/></span>
-            <span>耳科检查</span>
-        </h1>
-        <div class="product-point-con clearfix">
-            <table style="border: 1px solid; width: 100%">
-                <tr style="border: 1px solid">
-                    <td class="td-t">耳别</td>
-                    <td class="td-t">左耳</td>
-                    <td class="td-t">右耳</td>
-                </tr>
-                <tr>
-                    <td class="td-t">耳廓</td>
-                    <td class="td-t">
-                        <?= Common::showArrayValue(\app\models\Cases::$erKuo, $info->left_er_kuo); ?>
-                    </td>
-                    <td class="td-t">
-                        <?= Common::showArrayValue(\app\models\Cases::$erKuo, $info->right_er_kuo); ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td-t">耳道</td>
-                    <td class="td-t">
-                        <?= Common::showArrayValue(\app\models\Cases::$erDao, $info->left_er_dao); ?>
-                    </td>
-                    <td class="td-t">
-                        <?= Common::showArrayValue(\app\models\Cases::$erDao, $info->right_er_dao); ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td-t">骨膜</td>
-                    <td class="td-t">
-                        <?= Common::showArrayValue(\app\models\Cases::$guMo, $info->left_gu_mo); ?>
-                    </td>
-                    <td class="td-t">
-                        <?= Common::showArrayValue(\app\models\Cases::$guMo, $info->right_gu_mo); ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td-t">乳突</td>
-                    <td class="td-t">
-                        <?= Common::showArrayValue(\app\models\Cases::$ruTu, $info->left_ru_tu); ?>
-                    </td>
-                    <td class="td-t">
-                        <?= Common::showArrayValue(\app\models\Cases::$ruTu, $info->right_ru_tu); ?>
-                    </td>
-                </tr>
-            </table>
+<?php if (Yii::$app->user->identity->doctor): ?>
+    <div class="product-function-point">
+        <div class="clearfix">
+            <h1 class="clearfix">
+                <span><img src="/res/img/h1-left-border.png" alt=""/></span>
+                <span>耳科检查</span>
+            </h1>
+            <div class="product-point-con clearfix">
+                <table style="border: 1px solid; width: 100%">
+                    <tr style="border: 1px solid">
+                        <td class="td-t">耳别</td>
+                        <td class="td-t">左耳</td>
+                        <td class="td-t">右耳</td>
+                    </tr>
+                    <tr>
+                        <td class="td-t">耳廓</td>
+                        <td class="td-t">
+                            <?= Common::showArrayValue(\app\models\Cases::$erKuo, $info->left_er_kuo); ?>
+                        </td>
+                        <td class="td-t">
+                            <?= Common::showArrayValue(\app\models\Cases::$erKuo, $info->right_er_kuo); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-t">耳道</td>
+                        <td class="td-t">
+                            <?= Common::showArrayValue(\app\models\Cases::$erDao, $info->left_er_dao); ?>
+                        </td>
+                        <td class="td-t">
+                            <?= Common::showArrayValue(\app\models\Cases::$erDao, $info->right_er_dao); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-t">骨膜</td>
+                        <td class="td-t">
+                            <?= Common::showArrayValue(\app\models\Cases::$guMo, $info->left_gu_mo); ?>
+                        </td>
+                        <td class="td-t">
+                            <?= Common::showArrayValue(\app\models\Cases::$guMo, $info->right_gu_mo); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-t">乳突</td>
+                        <td class="td-t">
+                            <?= Common::showArrayValue(\app\models\Cases::$ruTu, $info->left_ru_tu); ?>
+                        </td>
+                        <td class="td-t">
+                            <?= Common::showArrayValue(\app\models\Cases::$ruTu, $info->right_ru_tu); ?>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
-</div>
+<?php endif ?>
 
-<div class="product-function-point">
-    <div class="clearfix">
-        <h1 class="clearfix">
-            <span><img src="/res/img/h1-left-border.png" alt=""/></span>
-            <span>鼓室图</span>
-        </h1>
-        <div class="product-point-con clearfix">
-            <table style="border: 1px solid; width: 100%">
-                <tr style="border: 1px solid">
-                    <td class="td-t">耳别</td>
-                    <td class="td-t">左耳</td>
-                    <td class="td-t">右耳</td>
-                </tr>
-                <tr>
-                    <td class="td-t">纯音</td>
-                    <td class="td-t">
-                        <?= $info->chun_yin_left; ?> Hz
-                    </td>
-                    <td class="td-t">
-                        <?= $info->chun_yin_right; ?> Hz
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td-t">SA</td>
-                    <td class="td-t">
-                        <?= $info->sa_left; ?> ml
-                    </td>
-                    <td class="td-t">
-                        <?= $info->sa_right; ?> ml
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td-t">TPP</td>
-                    <td class="td-t">
-                        <?= $info->tpp_left; ?> daPa
-                    </td>
-                    <td class="td-t">
-                        <?= $info->tpp_right; ?> daPa
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td-t">类型</td>
-                    <td class="td-t">
-                        <?= $info->gushi_type_left; ?>
-                    </td>
-                    <td class="td-t">
-                        <?= $info->gushi_type_right; ?>
-                    </td>
-                </tr>
-            </table>
+<?php if (Yii::$app->user->identity->doctor): ?>
+    <div class="product-function-point">
+        <div class="clearfix">
+            <h1 class="clearfix">
+                <span><img src="/res/img/h1-left-border.png" alt=""/></span>
+                <span>鼓室图</span>
+            </h1>
+            <div class="product-point-con clearfix">
+                <table style="border: 1px solid; width: 100%">
+                    <tr style="border: 1px solid">
+                        <td class="td-t">耳别</td>
+                        <td class="td-t">左耳</td>
+                        <td class="td-t">右耳</td>
+                    </tr>
+                    <tr>
+                        <td class="td-t">纯音</td>
+                        <td class="td-t">
+                            <?= $info->chun_yin_left; ?> Hz
+                        </td>
+                        <td class="td-t">
+                            <?= $info->chun_yin_right; ?> Hz
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-t">SA</td>
+                        <td class="td-t">
+                            <?= $info->sa_left; ?> ml
+                        </td>
+                        <td class="td-t">
+                            <?= $info->sa_right; ?> ml
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-t">TPP</td>
+                        <td class="td-t">
+                            <?= $info->tpp_left; ?> daPa
+                        </td>
+                        <td class="td-t">
+                            <?= $info->tpp_right; ?> daPa
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-t">类型</td>
+                        <td class="td-t">
+                            <?= $info->gushi_type_left; ?>
+                        </td>
+                        <td class="td-t">
+                            <?= $info->gushi_type_right; ?>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
-</div>
+<?php endif ?>
 
-<div class="product-function-point">
-    <div class="clearfix">
-        <h1 class="clearfix">
-            <span><img src="/res/img/h1-left-border.png" alt=""/></span>
-            <span>纯音测听</span>
-        </h1>
-        <div class="product-point-con clearfix">
-            <ul class="product-point-line">
-                <?php if ($info->left_ce_ting): ?>
-                    <li>左耳:</li>
-                    <li><img style="width: 100%;border-radius:5px;" src="<?= $info->left_ce_ting; ?>"></li>
-                <?php else: ?>
-                    <li>左耳: 未设置</li>
-                <?php endif; ?>
-                <?php if ($info->right_ce_ting): ?>
-                    <li>右耳:</li>
-                    <li><img style="width: 100%;border-radius:5px;" src="<?= $info->right_ce_ting; ?>"></li>
-                    <?php ;
-                else: ?>
-                    <li>右耳: 未设置</li>
-                    <?php ;endif; ?>
-            </ul>
+<?php if (Yii::$app->user->id == $info->uid || Yii::$app->user->identity->doctor): ?>
+    <div class="product-function-point">
+        <div class="clearfix">
+            <h1 class="clearfix">
+                <span><img src="/res/img/h1-left-border.png" alt=""/></span>
+                <span>纯音测听</span>
+            </h1>
+            <div class="product-point-con clearfix">
+                <ul class="product-point-line">
+                    <?php if ($info->left_ce_ting): ?>
+                        <li>左耳:</li>
+                        <li><img style="width: 100%;border-radius:5px;" src="<?= $info->left_ce_ting; ?>"></li>
+                    <?php else: ?>
+                        <li>左耳: 未设置</li>
+                    <?php endif; ?>
+                    <?php if ($info->right_ce_ting): ?>
+                        <li>右耳:</li>
+                        <li><img style="width: 100%;border-radius:5px;" src="<?= $info->right_ce_ting; ?>"></li>
+                        <?php ;
+                    else: ?>
+                        <li>右耳: 未设置</li>
+                        <?php ;endif; ?>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
+<?php endif ?>
 
-<div class="product-function-point">
-    <div class="clearfix">
-        <h1 class="clearfix">
-            <span><img src="/res/img/h1-left-border.png" alt=""/></span>
-            <span>言语识别</span>
-        </h1>
-        <div class="product-point-con clearfix">
-            <table style="border: 1px solid; width: 100%">
-                <tr style="border: 1px solid">
-                    <td class="td-t">耳别</td>
-                    <td class="td-t">左耳</td>
-                    <td class="td-t">右耳</td>
-                </tr>
-                <tr>
-                    <td class="td-t">测试响度</td>
-                    <td class="td-t">
-                        <?= $info->ceshi_qiangdu_left; ?>
-                    </td>
-                    <td class="td-t">
-                        <?= $info->ceshi_qiangdu_left; ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td-t">百分比</td>
-                    <td class="td-t">
-                        <?= $info->shibie_rate_left; ?>
-                    </td>
-                    <td class="td-t">
-                        <?= $info->shibie_rate_right; ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td-t">信噪比</td>
-                    <td class="td-t">
-                        <?= $info->xinzao_left; ?>
-                    </td>
-                    <td class="td-t">
-                        <?= $info->xinzao_right; ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td-t">词表</td>
-                    <td class="td-t">
-                        <?= $info->cibiao_left; ?>
-                    </td>
-                    <td class="td-t">
-                        <?= $info->cibiao_right; ?>
-                    </td>
-                </tr>
-            </table>
+<?php if (Yii::$app->user->identity->doctor): ?>
+    <div class="product-function-point">
+        <div class="clearfix">
+            <h1 class="clearfix">
+                <span><img src="/res/img/h1-left-border.png" alt=""/></span>
+                <span>言语识别</span>
+            </h1>
+            <div class="product-point-con clearfix">
+                <table style="border: 1px solid; width: 100%">
+                    <tr style="border: 1px solid">
+                        <td class="td-t">耳别</td>
+                        <td class="td-t">左耳</td>
+                        <td class="td-t">右耳</td>
+                    </tr>
+                    <tr>
+                        <td class="td-t">测试响度</td>
+                        <td class="td-t">
+                            <?= $info->ceshi_qiangdu_left; ?>
+                        </td>
+                        <td class="td-t">
+                            <?= $info->ceshi_qiangdu_left; ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-t">百分比</td>
+                        <td class="td-t">
+                            <?= $info->shibie_rate_left; ?>
+                        </td>
+                        <td class="td-t">
+                            <?= $info->shibie_rate_right; ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-t">信噪比</td>
+                        <td class="td-t">
+                            <?= $info->xinzao_left; ?>
+                        </td>
+                        <td class="td-t">
+                            <?= $info->xinzao_right; ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-t">词表</td>
+                        <td class="td-t">
+                            <?= $info->cibiao_left; ?>
+                        </td>
+                        <td class="td-t">
+                            <?= $info->cibiao_right; ?>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
-</div>
+<?php endif ?>
 
-<div class="product-function-point">
-    <div class="clearfix">
-        <h1 class="clearfix">
-            <span><img src="/res/img/h1-left-border.png" alt=""/></span>
-            <span>试听</span>
-        </h1>
-        <div class="product-point-con clearfix">
-            <table style="border: 1px solid; width: 100%">
-                <tr style="border: 1px solid">
-                    <td class="td-t">耳别</td>
-                    <td class="td-t">左耳</td>
-                    <td class="td-t">右耳</td>
-                </tr>
-                <tr>
-                    <td class="td-t">机型一</td>
-                    <td class="td-t">
-                        <?= $info->jixing1_left; ?>
-                    </td>
-                    <td class="td-t">
-                        <?= $info->jixing1_right; ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td-t">试听效果</td>
-                    <td class="td-t">
-                        <?= $info->xiaoguo1_left; ?>
-                    </td>
-                    <td class="td-t">
-                        <?= $info->xiaoguo1_right; ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td-t">备注</td>
-                    <td class="td-t">
-                        <?= $info->remark1_left; ?>
-                    </td>
-                    <td class="td-t">
-                        <?= $info->remark1_right; ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td-t">机型二</td>
-                    <td class="td-t">
-                        <?= $info->jixing2_left; ?>
-                    </td>
-                    <td class="td-t">
-                        <?= $info->jixing2_right; ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td-t">试听效果</td>
-                    <td class="td-t">
-                        <?= $info->xiaoguo2_left; ?>
-                    </td>
-                    <td class="td-t">
-                        <?= $info->xiaoguo2_right; ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td-t">备注</td>
-                    <td class="td-t">
-                        <?= $info->remark2_left; ?>
-                    </td>
-                    <td class="td-t">
-                        <?= $info->remark2_right; ?>
-                    </td>
-                </tr>
-            </table>
+<?php if (Yii::$app->user->identity->doctor): ?>
+    <div class="product-function-point">
+        <div class="clearfix">
+            <h1 class="clearfix">
+                <span><img src="/res/img/h1-left-border.png" alt=""/></span>
+                <span>试听</span>
+            </h1>
+            <div class="product-point-con clearfix">
+                <table style="border: 1px solid; width: 100%">
+                    <tr style="border: 1px solid">
+                        <td class="td-t">耳别</td>
+                        <td class="td-t">左耳</td>
+                        <td class="td-t">右耳</td>
+                    </tr>
+                    <tr>
+                        <td class="td-t">机型一</td>
+                        <td class="td-t">
+                            <?= $info->jixing1_left; ?>
+                        </td>
+                        <td class="td-t">
+                            <?= $info->jixing1_right; ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-t">试听效果</td>
+                        <td class="td-t">
+                            <?= $info->xiaoguo1_left; ?>
+                        </td>
+                        <td class="td-t">
+                            <?= $info->xiaoguo1_right; ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-t">备注</td>
+                        <td class="td-t">
+                            <?= $info->remark1_left; ?>
+                        </td>
+                        <td class="td-t">
+                            <?= $info->remark1_right; ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-t">机型二</td>
+                        <td class="td-t">
+                            <?= $info->jixing2_left; ?>
+                        </td>
+                        <td class="td-t">
+                            <?= $info->jixing2_right; ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-t">试听效果</td>
+                        <td class="td-t">
+                            <?= $info->xiaoguo2_left; ?>
+                        </td>
+                        <td class="td-t">
+                            <?= $info->xiaoguo2_right; ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-t">备注</td>
+                        <td class="td-t">
+                            <?= $info->remark2_left; ?>
+                        </td>
+                        <td class="td-t">
+                            <?= $info->remark2_right; ?>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
-</div>
+<?php endif ?>

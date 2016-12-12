@@ -4,6 +4,8 @@
  * User: caoxiang
  * Date: 16/6/28
  * Time: 下午4:41
+ *
+ * @var \app\models\Cases $model
  */
 
 use yii\widgets\ActiveForm;
@@ -128,7 +130,7 @@ use yii\widgets\ActiveForm;
                             <?php foreach (\app\models\Cases::$deaf_statuses as $id => $value): ?>
                                 &nbsp;
                                 <option
-                                    value="<?= $id ?>" <?php if ($model->deaf_status == $id) echo "selected" ?>><?= $value ?></option>
+                                        value="<?= $id ?>" <?php if ($model->deaf_status == $id) echo "selected" ?>><?= $value ?></option>
                             <?php endforeach; ?>
                                 </select>
                         </span>
@@ -703,293 +705,301 @@ use yii\widgets\ActiveForm;
             </div>
         </div>
 
-        <div class="product-function-point">
-            <div class="clearfix">
-                <h1 class="clearfix">
-                    <span><img src="/res/img/h1-left-border.png" alt=""/></span>
-                    <span>耳科检查</span>
-                </h1>
-                <div class="product-point-con clearfix">
-                    <table style="border: 1px solid; width: 100%">
-                        <tr style="border: 1px solid">
-                            <td class="td-t">耳别</td>
-                            <td class="td-t">左耳</td>
-                            <td class="td-t">右耳</td>
-                        </tr>
-                        <tr>
-                            <td class="td-c">耳廓</td>
-                            <td class="td-c">
-                                <?php foreach (\app\models\Cases::$erKuo as $id => $value): ?>
-                                    <label><input type="radio" name="Cases[left_er_kuo]" value="<?= $id ?>"
-                                                  class="radio-c" <?php if ($model->left_er_kuo == $id) echo "checked" ?>> <?= $value ?>
-                                    </label>
-                                    <br/>
-                                <?php endforeach; ?>
-                            </td>
-                            <td class="td-c">
-                                <?php foreach (\app\models\Cases::$erKuo as $id => $value): ?>
-                                    <label>
-                                        <input type="radio" name="Cases[right_er_kuo]" value="<?= $id ?>"
-                                               class="radio-c" <?php if ($model->right_er_kuo == $id) echo "checked" ?>>
-                                        <?= $value ?>
-                                    </label>
-                                    <br/>
-                                <?php endforeach; ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="td-c">耳道</td>
-                            <td class="td-c">
-                                <?php foreach (\app\models\Cases::$erDao as $id => $value): ?>
-                                    <label><input type="radio" name="Cases[left_er_dao]" value="<?= $id ?>"
-                                                  class="radio-c" <?php if ($model->left_er_dao == $id) echo "checked" ?>> <?= $value ?>
-                                    </label>
-                                    <br/>
-                                <?php endforeach; ?>
-                            </td>
-                            <td class="td-c">
-                                <?php foreach (\app\models\Cases::$erDao as $id => $value): ?>
-                                    <label>
-                                        <input type="radio" name="Cases[right_er_dao]" value="<?= $id ?>"
-                                               class="radio-c" <?php if ($model->right_er_dao == $id) echo "checked" ?>>
-                                        <?= $value ?>
-                                    </label>
-                                    <br/>
-                                <?php endforeach; ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="td-c">骨膜</td>
-                            <td class="td-c">
-                                <?php foreach (\app\models\Cases::$guMo as $id => $value): ?>
-                                    <label><input type="radio" name="Cases[left_gu_mo]" value="<?= $id ?>"
-                                                  class="radio-c" <?php if ($model->left_gu_mo == $id) echo "checked" ?>> <?= $value ?>
-                                    </label>
-                                    <br/>
-                                <?php endforeach; ?>
-                            </td>
-                            <td class="td-c">
-                                <?php foreach (\app\models\Cases::$guMo as $id => $value): ?>
-                                    <label>
-                                        <input type="radio" name="Cases[right_gu_mo]" value="<?= $id ?>"
-                                               class="radio-c" <?php if ($model->right_gu_mo == $id) echo "checked" ?>>
-                                        <?= $value ?>
-                                    </label>
-                                    <br/>
-                                <?php endforeach; ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="td-c">乳突</td>
-                            <td class="td-c">
-                                <?php foreach (\app\models\Cases::$ruTu as $id => $value): ?>
-                                    <label><input type="radio" name="Cases[left_ru_tu]" value="<?= $id ?>"
-                                                  class="radio-c" <?php if ($model->left_ru_tu == $id) echo "checked" ?>> <?= $value ?>
-                                    </label>
-                                    <br/>
-                                <?php endforeach; ?>
-                            </td>
-                            <td class="td-c">
-                                <?php foreach (\app\models\Cases::$ruTu as $id => $value): ?>
-                                    <label>
-                                        <input type="radio" name="Cases[right_ru_tu]" value="<?= $id ?>"
-                                               class="radio-c" <?php if ($model->right_ru_tu == $id) echo "checked" ?>>
-                                        <?= $value ?>
-                                    </label>
-                                    <br/>
-                                <?php endforeach; ?>
-                            </td>
-                        </tr>
-                    </table>
+        <?php if (Yii::$app->user->identity->doctor): ?>
+            <div class="product-function-point">
+                <div class="clearfix">
+                    <h1 class="clearfix">
+                        <span><img src="/res/img/h1-left-border.png" alt=""/></span>
+                        <span>耳科检查</span>
+                    </h1>
+                    <div class="product-point-con clearfix">
+                        <table style="border: 1px solid; width: 100%">
+                            <tr style="border: 1px solid">
+                                <td class="td-t">耳别</td>
+                                <td class="td-t">左耳</td>
+                                <td class="td-t">右耳</td>
+                            </tr>
+                            <tr>
+                                <td class="td-c">耳廓</td>
+                                <td class="td-c">
+                                    <?php foreach (\app\models\Cases::$erKuo as $id => $value): ?>
+                                        <label><input type="radio" name="Cases[left_er_kuo]" value="<?= $id ?>"
+                                                      class="radio-c" <?php if ($model->left_er_kuo == $id) echo "checked" ?>> <?= $value ?>
+                                        </label>
+                                        <br/>
+                                    <?php endforeach; ?>
+                                </td>
+                                <td class="td-c">
+                                    <?php foreach (\app\models\Cases::$erKuo as $id => $value): ?>
+                                        <label>
+                                            <input type="radio" name="Cases[right_er_kuo]" value="<?= $id ?>"
+                                                   class="radio-c" <?php if ($model->right_er_kuo == $id) echo "checked" ?>>
+                                            <?= $value ?>
+                                        </label>
+                                        <br/>
+                                    <?php endforeach; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-c">耳道</td>
+                                <td class="td-c">
+                                    <?php foreach (\app\models\Cases::$erDao as $id => $value): ?>
+                                        <label><input type="radio" name="Cases[left_er_dao]" value="<?= $id ?>"
+                                                      class="radio-c" <?php if ($model->left_er_dao == $id) echo "checked" ?>> <?= $value ?>
+                                        </label>
+                                        <br/>
+                                    <?php endforeach; ?>
+                                </td>
+                                <td class="td-c">
+                                    <?php foreach (\app\models\Cases::$erDao as $id => $value): ?>
+                                        <label>
+                                            <input type="radio" name="Cases[right_er_dao]" value="<?= $id ?>"
+                                                   class="radio-c" <?php if ($model->right_er_dao == $id) echo "checked" ?>>
+                                            <?= $value ?>
+                                        </label>
+                                        <br/>
+                                    <?php endforeach; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-c">骨膜</td>
+                                <td class="td-c">
+                                    <?php foreach (\app\models\Cases::$guMo as $id => $value): ?>
+                                        <label><input type="radio" name="Cases[left_gu_mo]" value="<?= $id ?>"
+                                                      class="radio-c" <?php if ($model->left_gu_mo == $id) echo "checked" ?>> <?= $value ?>
+                                        </label>
+                                        <br/>
+                                    <?php endforeach; ?>
+                                </td>
+                                <td class="td-c">
+                                    <?php foreach (\app\models\Cases::$guMo as $id => $value): ?>
+                                        <label>
+                                            <input type="radio" name="Cases[right_gu_mo]" value="<?= $id ?>"
+                                                   class="radio-c" <?php if ($model->right_gu_mo == $id) echo "checked" ?>>
+                                            <?= $value ?>
+                                        </label>
+                                        <br/>
+                                    <?php endforeach; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-c">乳突</td>
+                                <td class="td-c">
+                                    <?php foreach (\app\models\Cases::$ruTu as $id => $value): ?>
+                                        <label><input type="radio" name="Cases[left_ru_tu]" value="<?= $id ?>"
+                                                      class="radio-c" <?php if ($model->left_ru_tu == $id) echo "checked" ?>> <?= $value ?>
+                                        </label>
+                                        <br/>
+                                    <?php endforeach; ?>
+                                </td>
+                                <td class="td-c">
+                                    <?php foreach (\app\models\Cases::$ruTu as $id => $value): ?>
+                                        <label>
+                                            <input type="radio" name="Cases[right_ru_tu]" value="<?= $id ?>"
+                                                   class="radio-c" <?php if ($model->right_ru_tu == $id) echo "checked" ?>>
+                                            <?= $value ?>
+                                        </label>
+                                        <br/>
+                                    <?php endforeach; ?>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php endif ?>
 
-        <div class="product-function-point">
-            <div class="clearfix">
-                <h1 class="clearfix">
-                    <span><img src="/res/img/h1-left-border.png" alt=""/></span>
-                    <span>鼓室图</span>
-                </h1>
-                <div class="product-point-con clearfix">
-                    <table style="border: 1px solid; width: 100%">
-                        <tr style="border: 1px solid">
-                            <td class="td-t">耳别</td>
-                            <td class="td-t">左耳</td>
-                            <td class="td-t">右耳</td>
-                        </tr>
-                        <tr>
-                            <td class="td-t">纯音</td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[chun_yin_left]', $model->chun_yin_left, ['style' => 'border: 1px solid; width: 80px']); ?>
-                                Hz
-                            </td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[chun_yin_right]', $model->chun_yin_right, ['style' => 'border: 1px solid; width: 80px']); ?>
-                                Hz
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="td-t">SA</td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[sa_left]', $model->sa_left, ['style' => 'border: 1px solid; width: 80px']); ?>
-                                ml
-                            </td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[sa_right]', $model->sa_right, ['style' => 'border: 1px solid; width: 80px']); ?>
-                                ml
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="td-t">TPP</td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[tpp_left]', $model->tpp_left, ['style' => 'border: 1px solid; width: 80px']); ?>
-                                daPa
-                            </td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[tpp_right]', $model->tpp_right, ['style' => 'border: 1px solid; width: 80px']); ?>
-                                daPa
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="td-t">类型</td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[gushi_type_left]', $model->gushi_type_left, ['style' => 'border: 1px solid; width: 80px']); ?>
-                            </td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[gushi_type_right]', $model->gushi_type_right, ['style' => 'border: 1px solid; width: 80px']); ?>
-                            </td>
-                        </tr>
-                    </table>
+        <?php if (Yii::$app->user->identity->doctor): ?>
+            <div class="product-function-point">
+                <div class="clearfix">
+                    <h1 class="clearfix">
+                        <span><img src="/res/img/h1-left-border.png" alt=""/></span>
+                        <span>鼓室图</span>
+                    </h1>
+                    <div class="product-point-con clearfix">
+                        <table style="border: 1px solid; width: 100%">
+                            <tr style="border: 1px solid">
+                                <td class="td-t">耳别</td>
+                                <td class="td-t">左耳</td>
+                                <td class="td-t">右耳</td>
+                            </tr>
+                            <tr>
+                                <td class="td-t">纯音</td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[chun_yin_left]', $model->chun_yin_left, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                    Hz
+                                </td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[chun_yin_right]', $model->chun_yin_right, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                    Hz
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-t">SA</td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[sa_left]', $model->sa_left, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                    ml
+                                </td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[sa_right]', $model->sa_right, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                    ml
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-t">TPP</td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[tpp_left]', $model->tpp_left, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                    daPa
+                                </td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[tpp_right]', $model->tpp_right, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                    daPa
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-t">类型</td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[gushi_type_left]', $model->gushi_type_left, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                </td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[gushi_type_right]', $model->gushi_type_right, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php endif ?>
 
-        <div class="product-function-point">
-            <div class="clearfix">
-                <h1 class="clearfix">
-                    <span><img src="/res/img/h1-left-border.png" alt=""/></span>
-                    <span>言语识别</span>
-                </h1>
-                <div class="product-point-con clearfix">
-                    <table style="border: 1px solid; width: 100%">
-                        <tr style="border: 1px solid">
-                            <td class="td-t">耳别</td>
-                            <td class="td-t">左耳</td>
-                            <td class="td-t">右耳</td>
-                        </tr>
-                        <tr>
-                            <td class="td-t">测试响度</td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[ceshi_qiangdu_left]', $model->ceshi_qiangdu_left, ['style' => 'border: 1px solid; width: 80px']); ?>
-                            </td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[ceshi_qiangdu_right]', $model->ceshi_qiangdu_right, ['style' => 'border: 1px solid; width: 80px']); ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="td-t">百分比</td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[shibie_rate_left]', $model->shibie_rate_left, ['style' => 'border: 1px solid; width: 80px']); ?>
-                            </td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[shibie_rate_right]', $model->shibie_rate_right, ['style' => 'border: 1px solid; width: 80px']); ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="td-t">信噪比</td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[xinzao_left]', $model->xinzao_left, ['style' => 'border: 1px solid; width: 80px']); ?>
-                            </td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[xinzao_right]', $model->xinzao_right, ['style' => 'border: 1px solid; width: 80px']); ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="td-t">词表</td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[cibiao_left]', $model->cibiao_left, ['style' => 'border: 1px solid; width: 80px']); ?>
-                            </td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[cibiao_right]', $model->cibiao_right, ['style' => 'border: 1px solid; width: 80px']); ?>
-                            </td>
-                        </tr>
-                    </table>
+        <?php if (Yii::$app->user->identity->doctor): ?>
+            <div class="product-function-point">
+                <div class="clearfix">
+                    <h1 class="clearfix">
+                        <span><img src="/res/img/h1-left-border.png" alt=""/></span>
+                        <span>言语识别</span>
+                    </h1>
+                    <div class="product-point-con clearfix">
+                        <table style="border: 1px solid; width: 100%">
+                            <tr style="border: 1px solid">
+                                <td class="td-t">耳别</td>
+                                <td class="td-t">左耳</td>
+                                <td class="td-t">右耳</td>
+                            </tr>
+                            <tr>
+                                <td class="td-t">测试响度</td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[ceshi_qiangdu_left]', $model->ceshi_qiangdu_left, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                </td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[ceshi_qiangdu_right]', $model->ceshi_qiangdu_right, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-t">百分比</td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[shibie_rate_left]', $model->shibie_rate_left, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                </td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[shibie_rate_right]', $model->shibie_rate_right, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-t">信噪比</td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[xinzao_left]', $model->xinzao_left, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                </td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[xinzao_right]', $model->xinzao_right, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-t">词表</td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[cibiao_left]', $model->cibiao_left, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                </td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[cibiao_right]', $model->cibiao_right, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php endif ?>
 
-        <div class="product-function-point">
-            <div class="clearfix">
-                <h1 class="clearfix">
-                    <span><img src="/res/img/h1-left-border.png" alt=""/></span>
-                    <span>试听</span>
-                </h1>
-                <div class="product-point-con clearfix">
-                    <table style="border: 1px solid; width: 100%">
-                        <tr style="border: 1px solid">
-                            <td class="td-t">耳别</td>
-                            <td class="td-t">左耳</td>
-                            <td class="td-t">右耳</td>
-                        </tr>
-                        <tr>
-                            <td class="td-t">机型一</td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[jixing1_left]', $model->jixing1_left, ['style' => 'border: 1px solid; width: 80px']); ?>
-                            </td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[jixing1_right]', $model->jixing1_right, ['style' => 'border: 1px solid; width: 80px']); ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="td-t">试听效果</td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[xiaoguo1_left]', $model->xiaoguo1_left, ['style' => 'border: 1px solid; width: 80px']); ?>
-                            </td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[xiaoguo1_right]', $model->xiaoguo1_right, ['style' => 'border: 1px solid; width: 80px']); ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="td-t">备注</td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[remark1_left]', $model->remark1_left, ['style' => 'border: 1px solid; width: 80px']); ?>
-                            </td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[remark1_right]', $model->remark1_right, ['style' => 'border: 1px solid; width: 80px']); ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="td-t">机型二</td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[jixing2_left]', $model->jixing2_left, ['style' => 'border: 1px solid; width: 80px']); ?>
-                            </td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[jixing2_right]', $model->jixing2_right, ['style' => 'border: 1px solid; width: 80px']); ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="td-t">试听效果</td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[xiaoguo2_left]', $model->xiaoguo2_left, ['style' => 'border: 1px solid; width: 80px']); ?>
-                            </td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[xiaoguo2_right]', $model->xiaoguo2_right, ['style' => 'border: 1px solid; width: 80px']); ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="td-t">备注</td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[remark2_left]', $model->remark2_left, ['style' => 'border: 1px solid; width: 80px']); ?>
-                            </td>
-                            <td class="td-t">
-                                <?= \yii\helpers\Html::textInput('Cases[remark2_right]', $model->remark2_right, ['style' => 'border: 1px solid; width: 80px']); ?>
-                            </td>
-                        </tr>
-                    </table>
+        <?php if (Yii::$app->user->identity->doctor): ?>
+            <div class="product-function-point">
+                <div class="clearfix">
+                    <h1 class="clearfix">
+                        <span><img src="/res/img/h1-left-border.png" alt=""/></span>
+                        <span>试听</span>
+                    </h1>
+                    <div class="product-point-con clearfix">
+                        <table style="border: 1px solid; width: 100%">
+                            <tr style="border: 1px solid">
+                                <td class="td-t">耳别</td>
+                                <td class="td-t">左耳</td>
+                                <td class="td-t">右耳</td>
+                            </tr>
+                            <tr>
+                                <td class="td-t">机型一</td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[jixing1_left]', $model->jixing1_left, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                </td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[jixing1_right]', $model->jixing1_right, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-t">试听效果</td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[xiaoguo1_left]', $model->xiaoguo1_left, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                </td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[xiaoguo1_right]', $model->xiaoguo1_right, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-t">备注</td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[remark1_left]', $model->remark1_left, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                </td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[remark1_right]', $model->remark1_right, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-t">机型二</td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[jixing2_left]', $model->jixing2_left, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                </td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[jixing2_right]', $model->jixing2_right, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-t">试听效果</td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[xiaoguo2_left]', $model->xiaoguo2_left, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                </td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[xiaoguo2_right]', $model->xiaoguo2_right, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td-t">备注</td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[remark2_left]', $model->remark2_left, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                </td>
+                                <td class="td-t">
+                                    <?= \yii\helpers\Html::textInput('Cases[remark2_right]', $model->remark2_right, ['style' => 'border: 1px solid; width: 80px']); ?>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php endif ?>
 
         <div class="product-function-point">
             <div class="clearfix">
