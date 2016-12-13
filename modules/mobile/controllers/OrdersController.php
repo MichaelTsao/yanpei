@@ -127,6 +127,7 @@ class OrdersController extends Controller
         }
         $data->status = Orders::STATUS_FINISH;
         $data->close_time = date('Y-m-d H:i:s');
+        $data->rate = Yii::$app->request->get('rate', 5);
         $data->save();
         $data->push();
         return $this->redirect('/m/orders/info/' . $id);

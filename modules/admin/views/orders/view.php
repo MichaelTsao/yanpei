@@ -71,6 +71,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'status',
                 'value' => \app\models\Orders::$statusList[$model->status],
             ],
+            'rate',
             'ctime',
         ],
     ]) ?>

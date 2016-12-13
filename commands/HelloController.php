@@ -41,7 +41,8 @@ class HelloController extends Controller
      */
     public function actionIndex($message = 'hello world')
     {
-        var_dump(Product::getBattery());
+        $d = Doctor::findOne('61114083620');
+        echo $d->rate."\n";
     }
 
     public function actionTest()

@@ -83,8 +83,38 @@
 
 <?php if ($item->status == \app\models\Orders::STATUS_USER_PAY): ?>
     <?php if ($item->uid == Yii::$app->user->id): ?>
+        <div style="text-align: center; margin-top: 80px">
+            <img src="/images/star.png" id="s1" style="width: 35px;" onclick="rate(1)">
+            &nbsp;
+            <img src="/images/star.png" id="s2" style="width: 35px;" onclick="rate(2)">
+            &nbsp;
+            <img src="/images/star.png" id="s3" style="width: 35px;" onclick="rate(3)">
+            &nbsp;
+            <img src="/images/star.png" id="s4" style="width: 35px;" onclick="rate(4)">
+            &nbsp;
+            <img src="/images/star.png" id="s5" style="width: 35px;" onclick="rate(5)">
+            <input type="hidden" value="5" id="rate">
+        </div>
         <div class="order-status-btn">
-            <a href="/m/orders/done/<?= $item->order_id ?>">完成订单</a>
+            <a href="#" onclick="done()">完成订单</a>
         </div>
     <?php endif; ?>
 <?php endif; ?>
+
+<script>
+    function rate(r) {
+        for (var i = 1; i <= 5; i++) {
+            var img = $("#s" + i);
+            if (i <= r) {
+                img.attr("src", "/images/star.png");
+            } else {
+                img.attr("src", "/images/star-2.png");
+            }
+        }
+        $('#rate').val(r);
+    }
+
+    function done() {
+        window.location.href = "/m/orders/done/<?= $item->order_id ?>" + "?rate=" + $('#rate').val();
+    }
+</script>

@@ -12,13 +12,20 @@
 
 <div class="doctor-introduction-banner">
     <img src="<?= $info->cover ?>" alt=""/>
-    <span id="fav"<?php if ($hasFav) echo ' class="active"'?> onclick="fav()"></span>
+    <span id="fav"<?php if ($hasFav) echo ' class="active"' ?> onclick="fav()"></span>
 </div>
 <div class="doctor-introduction-con clearfix">
     <div>
         <h1 class="clearfix">
             <span><?= $info->name ?></span>
             <span><?= $info->work_location ?></span>
+            <?php if ($info->rate): ?>
+                <span style="margin-left: 15px;">
+                    <?php for ($i = 0; $i < $info->rate; $i++): ?>
+                        <img src="/images/star.png" style="width: 15px">
+                    <?php endfor; ?>
+                </span>
+            <?php endif ?>
         </h1>
         <p><?= $info->title ?></p>
         <p><?= $info->school ?> <?= $info->education ?></p>
@@ -57,13 +64,13 @@
         var url = '';
         if (hasFav == true) {
             url = '/m/doctor/fav/<?= $info->uid ?>-0';
-        }else{
+        } else {
             url = '/m/doctor/fav/<?= $info->uid ?>-1';
         }
-        $.get(url, function (data){
-            if(data == 1){
+        $.get(url, function (data) {
+            if (data == 1) {
                 $('#fav').addClass('active');
-            }else{
+            } else {
                 $('#fav').removeClass('active');
             }
         });

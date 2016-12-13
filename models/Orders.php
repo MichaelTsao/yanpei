@@ -19,6 +19,7 @@ use Yii;
  * @property integer $time_section
  * @property string $appoint_date
  * @property integer $status
+ * @property integer $rate
  * @property string $ctime
  * @property string $accept_time
  * @property string $pay_time
@@ -55,7 +56,7 @@ class Orders extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['doctor_id', 'uid', 'product_id', 'hospital_id', 'office_id', 'time_section', 'status'], 'integer'],
+            [['doctor_id', 'uid', 'product_id', 'hospital_id', 'office_id', 'time_section', 'status', 'rate'], 'integer'],
             [['appoint_date', 'ctime', 'accept_time', 'pay_time', 'close_time', 'service_id'], 'safe']
         ];
     }
@@ -83,6 +84,7 @@ class Orders extends \yii\db\ActiveRecord
             'sectionName' => '时间段',
             'appoint_date' => '预约时间',
             'status' => '状态',
+            'rate' => '评分',
             'statusName' => '状态',
             'ctime' => '创建时间',
             'accept_time' => '接受时间',

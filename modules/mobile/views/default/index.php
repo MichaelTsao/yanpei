@@ -33,11 +33,21 @@
                     <h1 class="clearfix">
                         <span><?= $item->name ?></span>
                         <span><?= $item->title ?></span>
+                        <?php if($item->rate): ?>
+                            <span>
+                                <?php for ($i=0; $i < $item->rate; $i++): ?>
+                                    <img src="/images/star.png" style="width: 15px">
+                                <?php endfor;?>
+                            </span>
+                        <?php endif ?>
                     </h1>
                     <ul class="clearfix">
                         <?php if (!empty($item->service)): ?>
                             <?php foreach ($item->service as $s): ?>
-                                <li><?= \app\models\Service::findOne($s->service_id)->name ?></li>
+                                <li>
+                                    <?= \app\models\Service::findOne($s->service_id) ?
+                                        \app\models\Service::findOne($s->service_id)->name : '' ?>
+                                </li>
                             <?php endforeach ?>
                         <?php endif ?>
                     </ul>

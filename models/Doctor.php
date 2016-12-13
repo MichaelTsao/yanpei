@@ -22,6 +22,7 @@ use Yii;
  * @property integer $status
  * @property integer $sort
  * @property integer $top
+ * @property integer $rate
  */
 class Doctor extends \yii\db\ActiveRecord
 {
@@ -196,6 +197,16 @@ class Doctor extends \yii\db\ActiveRecord
     public static function getLocations()
     {
         return ['0' => '全部'] + self::find()->select(['work_location'])->distinct()->indexBy('work_location')
-            ->asArray()->column();
+                ->asArray()->column();
+    }
+
+    public function getRate()
+    {
+        $query = Orders::find()->where(['doctor_id' => $this->uid, 'status' => Orders::STATUS_FINISH]);
+        if ($all = $query->count()) {
+            return round($query->sum('rate') / $all);
+        } else {
+            return 0;
+        }
     }
 }
