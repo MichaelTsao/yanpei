@@ -36,12 +36,12 @@ class ArticleController extends Controller
                     [
                         'actions' => ['index', 'view'],
                         'allow' => true,
-                        'roles' => ['viewer', 'admin'],
+                        'roles' => ['viewer', 'admin', 'article-editor'],
                     ],
                     [
                         'actions' => ['create', 'update', 'delete'],
                         'allow' => true,
-                        'roles' => ['admin'],
+                        'roles' => ['admin', 'article-editor'],
                     ],
                 ],
                 'denyCallback' => function($rule, $action){

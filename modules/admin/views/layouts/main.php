@@ -38,18 +38,19 @@ AppAsset::register($this);
         $menuItems[] = ['label' => '登录', 'url' => ['/admin/default/login']];
     } else {
         $menuItems = [
-            ['label' => '订单', 'url' => ['/admin/orders']],
-            ['label' => '验配师', 'url' => ['/admin/doctor']],
-            ['label' => '用户', 'url' => ['/admin/user']],
-            ['label' => '会话', 'url' => ['/admin/chat']],
-            ['label' => '服务项目', 'url' => ['/admin/service']],
+            ['label' => '订单', 'url' => ['/admin/orders'], 'visible' => Yii::$app->account->can('read'),],
+            ['label' => '验配师', 'url' => ['/admin/doctor'], 'visible' => Yii::$app->account->can('read'),],
+            ['label' => '用户', 'url' => ['/admin/user'], 'visible' => Yii::$app->account->can('read'),],
+            ['label' => '会话', 'url' => ['/admin/chat'], 'visible' => Yii::$app->account->can('read'),],
+            ['label' => '服务项目', 'url' => ['/admin/service'], 'visible' => Yii::$app->account->can('read'),],
             [
                 'label' => '验配中心',
                 'items' => [
                     ['label' => '验配中心', 'url' => ['/admin/hospital']],
                     ['label' => '验配室', 'url' => ['/admin/office']],
                     ['label' => '库存', 'url' => ['/admin/store']],
-                ]
+                ],
+                'visible' => Yii::$app->account->can('read'),
             ],
             [
                 'label' => '产品',
@@ -58,32 +59,33 @@ AppAsset::register($this);
                     ['label' => '功能点设置', 'url' => ['/admin/feature']],
                     ['label' => '品牌设置', 'url' => ['/admin/brand']],
                     ['label' => '分类设置', 'url' => ['/admin/product-type']],
-                ]
+                ],
+                'visible' => Yii::$app->account->can('read'),
             ],
             [
                 'label' => '病历',
                 'items' => [
                     ['label' => '病历列表', 'url' => ['/admin/cases']],
                     ['label' => '疾病设置', 'url' => ['/admin/ill']],
-                ]
+                ],
+                'visible' => Yii::$app->account->can('read'),
             ],
             [
                 'label' => '文章',
                 'items' => [
                     ['label' => '文章', 'url' => ['/admin/article']],
                     ['label' => '分类', 'url' => ['/admin/article-type']],
-                ]
+                ],
+                'visible' => Yii::$app->account->can('read') || Yii::$app->account->can('manageArticle'),
             ],
-            ['label' => '首页通栏', 'url' => ['/admin/marquee']],
-            ['label' => '常规配置', 'url' => ['/admin/config']],
-        ];
-        if (Yii::$app->account->can('write')) {
-            $menuItems[] = ['label' => '系统账号', 'url' => ['/admin/account']];
-        }
-        $menuItems[] = [
-            'label' => '登出 (' . Yii::$app->account->identity->username . ')',
-            'url' => ['/admin/default/logout'],
-            'linkOptions' => ['data-method' => 'post']
+            ['label' => '首页通栏', 'url' => ['/admin/marquee'], 'visible' => Yii::$app->account->can('read'),],
+            ['label' => '常规配置', 'url' => ['/admin/config'], 'visible' => Yii::$app->account->can('read'),],
+            ['label' => '系统账号', 'url' => ['/admin/account'], 'visible' => Yii::$app->account->can('write')],
+            [
+                'label' => '登出 (' . Yii::$app->account->identity->username . ')',
+                'url' => ['/admin/default/logout'],
+                'linkOptions' => ['data-method' => 'post']
+            ]
         ];
     }
     echo Nav::widget([

@@ -10,26 +10,30 @@ class RbacController extends Controller
     {
         $auth = Yii::$app->authManager;
 
-        $read = $auth->createPermission('read');
-        $read->description = 'Read Data';
-        $auth->add($read);
+//        $read = $auth->createPermission('read');
+//        $read->description = 'Read Data';
+//        $auth->add($read);
+//
+//        $write = $auth->createPermission('write');
+//        $write->description = 'Write Data';
+//        $auth->add($write);
 
-        $write = $auth->createPermission('write');
-        $write->description = 'Write Data';
+        $write = $auth->createPermission('manageArticle');
+        $write->description = 'Manage Articles';
         $auth->add($write);
 
-        $viewer = $auth->createRole('viewer');
+        $viewer = $auth->createRole('article-editor');
         $auth->add($viewer);
-        $auth->addChild($viewer, $read);
+        $auth->addChild($viewer, $write);
 
-        $admin = $auth->createRole('admin');
-        $auth->add($admin);
-        $auth->addChild($admin, $write);
-        $auth->addChild($admin, $viewer);
+//        $admin = $auth->createRole('admin');
+//        $auth->add($admin);
+//        $auth->addChild($admin, $write);
+//        $auth->addChild($admin, $viewer);
 
-        $auth->assign($admin, 1);
+//        $auth->assign($admin, 1);
 //        $auth->assign($admin, 2);
-        $auth->assign($viewer, 2);
+//        $auth->assign($viewer, 2);
     }
 
     public function actionGet($uid)
