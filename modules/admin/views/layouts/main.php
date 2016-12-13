@@ -38,19 +38,35 @@ AppAsset::register($this);
         $menuItems[] = ['label' => '登录', 'url' => ['/admin/default/login']];
     } else {
         $menuItems = [
-            ['label' => '订单', 'url' => ['/admin/orders'], 'visible' => Yii::$app->account->can('read'),],
-            ['label' => '验配师', 'url' => ['/admin/doctor'], 'visible' => Yii::$app->account->can('read'),],
-            ['label' => '用户', 'url' => ['/admin/user'], 'visible' => Yii::$app->account->can('read'),],
+            [
+                'label' => '订单',
+                'url' => ['/admin/orders'],
+                'visible' => Yii::$app->account->can('read'),
+            ],
+            [
+                'label' => '验配师',
+                'url' => ['/admin/doctor'],
+                'visible' => Yii::$app->account->can('read') || Yii::$app->account->can('auditDoctor'),
+            ],
+            [
+                'label' => '用户',
+                'url' => ['/admin/user'],
+                'visible' => Yii::$app->account->can('read') || Yii::$app->account->can('auditDoctor'),
+            ],
             ['label' => '会话', 'url' => ['/admin/chat'], 'visible' => Yii::$app->account->can('read'),],
             ['label' => '服务项目', 'url' => ['/admin/service'], 'visible' => Yii::$app->account->can('read'),],
             [
                 'label' => '验配中心',
                 'items' => [
-                    ['label' => '验配中心', 'url' => ['/admin/hospital']],
-                    ['label' => '验配室', 'url' => ['/admin/office']],
-                    ['label' => '库存', 'url' => ['/admin/store']],
+                    ['label' => '验配中心', 'url' => ['/admin/hospital'], 'visible' => Yii::$app->account->can('read')],
+                    ['label' => '验配室', 'url' => ['/admin/office'], 'visible' => Yii::$app->account->can('read')],
+                    [
+                        'label' => '库存',
+                        'url' => ['/admin/store'],
+                        'visible' => Yii::$app->account->can('read') || Yii::$app->account->can('manageStore'),
+                    ],
                 ],
-                'visible' => Yii::$app->account->can('read'),
+                'visible' => Yii::$app->account->can('read') || Yii::$app->account->can('manageStore'),
             ],
             [
                 'label' => '产品',
@@ -60,7 +76,7 @@ AppAsset::register($this);
                     ['label' => '品牌设置', 'url' => ['/admin/brand']],
                     ['label' => '分类设置', 'url' => ['/admin/product-type']],
                 ],
-                'visible' => Yii::$app->account->can('read'),
+                'visible' => Yii::$app->account->can('read') || Yii::$app->account->can('manageProduct'),
             ],
             [
                 'label' => '病历',

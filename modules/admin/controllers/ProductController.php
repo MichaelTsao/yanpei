@@ -40,12 +40,12 @@ class ProductController extends Controller
                     [
                         'actions' => ['index', 'view'],
                         'allow' => true,
-                        'roles' => ['viewer', 'admin'],
+                        'roles' => ['viewer', 'admin', 'product-editor'],
                     ],
                     [
                         'actions' => ['create', 'update', 'delete', 'duplicate', 'up', 'down', 'top'],
                         'allow' => true,
-                        'roles' => ['admin'],
+                        'roles' => ['admin', 'product-editor'],
                     ],
                 ],
                 'denyCallback' => function($rule, $action){

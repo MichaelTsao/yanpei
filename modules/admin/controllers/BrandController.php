@@ -36,12 +36,12 @@ class BrandController extends Controller
                     [
                         'actions' => ['index', 'view'],
                         'allow' => true,
-                        'roles' => ['viewer', 'admin'],
+                        'roles' => ['viewer', 'admin', 'product-editor'],
                     ],
                     [
                         'actions' => ['create', 'update', 'delete'],
                         'allow' => true,
-                        'roles' => ['admin'],
+                        'roles' => ['admin', 'product-editor'],
                     ],
                 ],
                 'denyCallback' => function ($rule, $action) {

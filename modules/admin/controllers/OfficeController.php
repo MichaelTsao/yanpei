@@ -46,7 +46,7 @@ class OfficeController extends Controller
                     ],
                 ],
                 'denyCallback' => function($rule, $action){
-                    return $this->redirect(['index']);
+                    return $this->redirect(['/admin']);
                 }
             ],
         ];

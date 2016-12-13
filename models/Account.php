@@ -20,10 +20,16 @@ class Account extends \yii\db\ActiveRecord implements IdentityInterface
     const ROLE_ADMIN = 'admin';
     const ROLE_VIEWER = 'viewer';
     const ARTICLE_EDITOR = 'article-editor';
+    const PRODUCT_EDITOR = 'product-editor';
+    const STORE_EDITOR = 'store-editor';
+    const DOCTOR_AUDITOR = 'doctor-auditor';
     public static $roles = [
         self::ROLE_ADMIN => '管理员',
         self::ROLE_VIEWER => '普通用户',
         self::ARTICLE_EDITOR => '文章编辑',
+        self::PRODUCT_EDITOR => '产品维护',
+        self::STORE_EDITOR => '库存管理',
+        self::DOCTOR_AUDITOR => '验配师审核员',
     ];
 
     public $auth_key;

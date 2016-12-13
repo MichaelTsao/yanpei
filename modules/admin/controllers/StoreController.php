@@ -36,16 +36,16 @@ class StoreController extends Controller
                     [
                         'actions' => ['index', 'view'],
                         'allow' => true,
-                        'roles' => ['viewer', 'admin'],
+                        'roles' => ['viewer', 'admin', 'store-editor'],
                     ],
                     [
                         'actions' => ['create', 'update', 'delete'],
                         'allow' => true,
-                        'roles' => ['admin'],
+                        'roles' => ['admin', 'store-editor'],
                     ],
                 ],
                 'denyCallback' => function($rule, $action){
-                    return $this->redirect(['index']);
+                    return $this->redirect(['/admin']);
                 }
             ],
         ];
