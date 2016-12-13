@@ -18,37 +18,39 @@ class RbacController extends Controller
 //        $write->description = 'Write Data';
 //        $auth->add($write);
 
-        $write = $auth->createPermission('manageArticle');
-        $write->description = "Manage Articles";
-        $auth->add($write);
+//        $write = $auth->createPermission('manageArticle');
+//        $write->description = "Manage Articles";
+//        $auth->add($write);
+//
+//        $viewer = $auth->createRole('article-editor');
+//        $auth->add($viewer);
+//        $auth->addChild($viewer, $write);
+//
+//        $write = $auth->createPermission('manageProduct');
+//        $write->description = "Manage Products";
+//        $auth->add($write);
+//
+//        $viewer = $auth->createRole('product-editor');
+//        $auth->add($viewer);
+//        $auth->addChild($viewer, $write);
 
-        $viewer = $auth->createRole('article-editor');
+//        $write = $auth->createPermission('manageStore');
+//        $write->description = "Manage Product's Store";
+//        $auth->add($write);
+
+        $write = $auth->getPermission('manageStore');
+
+        $viewer = $auth->createRole('store-editor');
         $auth->add($viewer);
         $auth->addChild($viewer, $write);
 
-        $write = $auth->createPermission('manageProduct');
-        $write->description = "Manage Products";
-        $auth->add($write);
-
-        $viewer = $auth->createRole('product-editor');
-        $auth->add($viewer);
-        $auth->addChild($viewer, $write);
-
-        $write = $auth->createPermission('manageStore');
-        $write->description = "Manage Product's Store";
-        $auth->add($write);
-
-        $viewer = $auth->createRole('store-auditor');
-        $auth->add($viewer);
-        $auth->addChild($viewer, $write);
-
-        $write = $auth->createPermission('auditDoctor');
-        $write->description = "Audit Doctors";
-        $auth->add($write);
-
-        $viewer = $auth->createRole('doctor-auditor');
-        $auth->add($viewer);
-        $auth->addChild($viewer, $write);
+//        $write = $auth->createPermission('auditDoctor');
+//        $write->description = "Audit Doctors";
+//        $auth->add($write);
+//
+//        $viewer = $auth->createRole('doctor-auditor');
+//        $auth->add($viewer);
+//        $auth->addChild($viewer, $write);
 
 //        $admin = $auth->createRole('admin');
 //        $auth->add($admin);
