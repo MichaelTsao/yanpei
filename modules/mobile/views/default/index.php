@@ -3,7 +3,7 @@
         <span><img src="/res/img/seach-imgs.png" alt=""/></span>
         <span>
             <input type="text" id="keyword" placeholder="搜索" value="<?= isset($keyword) ? $keyword : '' ?>"
-                   onkeypress="search()"/>
+                   onkeypress="pressEnter()"/>
         </span>
     </p>
 </div>
